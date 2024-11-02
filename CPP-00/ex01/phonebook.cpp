@@ -6,11 +6,11 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 11:58:09 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/02 15:59:54 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/02 16:40:51 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.h"
+#include "phonebook.hpp"
 
 void	add_action(PhoneBook mybook, std::string input)
 {
@@ -35,7 +35,6 @@ int	main()
 	PhoneBook	myBook;
 	std::string	input;
 
-	(void)myBook;
 	while (input.empty() == true)
 	{
 		std::cout << "PHONEBOOK : ";
