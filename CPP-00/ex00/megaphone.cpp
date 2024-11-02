@@ -6,35 +6,31 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:42:28 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/10/29 15:20:43 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/02 11:51:37 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
-#include <cctype>
 
 int		main(int ac, char **av)
 {
-	int		i = 1;
-	int		x = 0;
+	std::string str;
 
 	if (ac == 1)
 	{
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 		return (0);
 	}
-	while (av[i])
+	else
 	{
-		while (av[i][x])
+		for (int i = 1; i < ac; i++)
 		{
-			if (av[i][x] >= 'a' && av[i][x] <= 'z')
-				av[i][x] -= 32; 
-			x++;
+			str = av[i];
+			for (size_t j = 0; j < str.size(); j++)
+				str[j] = std::toupper(str[j]);
+			std::cout << str;
 		}
-		x = 0;
-		std::cout << av[i];
-		i++;
 	}
 	std::cout << "\n";
 }
