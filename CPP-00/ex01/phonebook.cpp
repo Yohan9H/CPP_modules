@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 11:58:09 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/02 16:40:51 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/04 06:59:04 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,16 @@ int	main()
 		if (!std::getline(std::cin, input))
 			return ((std::cout << std::endl), 1);
 		if (input == "ADD")
+		{
 			add_action(myBook, input);
+			input = "";
+		}
+			
 		else if (input == "SEARCH")
+		{
 			search_action(myBook, input);
+			input = "";
+		}
 		else if (input == "EXIT")
 			exit_action(myBook, input);
 		else
