@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 07:34:13 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/04 07:53:46 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/04 09:56:24 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ std::string	Contact::getNickName() const
 	return (nickname);
 }
 
-int	Contact::getPhoneNumber() const
+std::string	Contact::getPhoneNumber() const
 {
 	return (phonenumber);
 }
@@ -67,7 +67,7 @@ void	Contact::setNickName(std::string nick)
 	nickname = nick;
 }
 
-void	Contact::setPhoneNumber(int number)
+void	Contact::setPhoneNumber(std::string number)
 {
 	phonenumber = number;
 }

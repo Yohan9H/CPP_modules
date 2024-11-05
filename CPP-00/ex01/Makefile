@@ -6,7 +6,7 @@
 #    By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 15:21:51 by yohurteb          #+#    #+#              #
-#    Updated: 2024/11/02 11:57:46 by yohurteb         ###   ########.fr        #
+#    Updated: 2024/11/04 08:36:54 by yohurteb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,9 @@ NAME = phonebook
 SRC_DIR = .
 OBJ_DIR = .obj
 
-SRCS = $(SRC_DIR)/phonebook.cpp
+SRCS = $(SRC_DIR)/phonebook.cpp \
+	$(SRC_DIR)/method_contact.cpp \
+	$(SRC_DIR)/method_phonebook.cpp
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.cpp=.o)))
 

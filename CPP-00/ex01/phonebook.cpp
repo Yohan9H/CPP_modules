@@ -6,33 +6,15 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 11:58:09 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/04 06:59:04 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:55:32 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 
-void	add_action(PhoneBook mybook, std::string input)
-{
-	(void)mybook;
-	(void)input;
-}
-
-void	search_action(PhoneBook mybook, std::string input)
-{
-	(void)mybook;
-	(void)input;
-}
-
-void	exit_action(PhoneBook mybook, std::string input)
-{
-	(void)mybook;
-	(void)input;
-}
-
 int	main()
 {
-	PhoneBook	myBook;
+	PhoneBook	myBook(0);
 	std::string	input;
 
 	while (input.empty() == true)
@@ -42,17 +24,16 @@ int	main()
 			return ((std::cout << std::endl), 1);
 		if (input == "ADD")
 		{
-			add_action(myBook, input);
+			myBook.addContact(myBook);
 			input = "";
 		}
-			
 		else if (input == "SEARCH")
 		{
-			search_action(myBook, input);
+			myBook.showRepo(myBook);
 			input = "";
 		}
 		else if (input == "EXIT")
-			exit_action(myBook, input);
+			break;
 		else
 			input = "";
 	}

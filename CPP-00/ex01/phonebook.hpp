@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 14:35:55 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/04 07:54:21 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:51:08 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,41 +22,51 @@ class	Contact
 		std::string first_name;
 		std::string	last_name;
 		std::string nickname;
-		int 		phonenumber;
+		std::string	phonenumber;
 		std::string darkest_secret;
+
 	public:
-		Contact() = default;
+		Contact() {
+			
+		};
 
 		// Getters
 		int				getIndexCreate() const;
 		std::string		getFirstName() const;
 		std::string		getLastName() const;
 		std::string		getNickName() const;
-		int				getPhoneNumber() const;
+		std::string		getPhoneNumber() const;
 		std::string		getDarkestSecret() const;
 
 		// Setters
-		void	setIndexCreate(int index);
-		void	setFirstName(std::string fisrt);
-		void	setLastName(std::string last);
-		void	setNickName(std::string nick);
-		void	setPhoneNumber(int number);
-		void	setDarkestSecret(std::string secret);
+		void			setIndexCreate(int index);
+		void			setFirstName(std::string fisrt);
+		void			setLastName(std::string last);
+		void			setNickName(std::string nick);
+		void			setPhoneNumber(std::string number);
+		void			setDarkestSecret(std::string secret);
 };
 
 class	PhoneBook
 {
-	private: 
+	private:
 		Contact	tab[8];
-		int		index_create_new_contact = 0;
+		int		index_tab;
+
 	public:
-		PhoneBook() = default;
+		PhoneBook(int index) : index_tab(index) {
+
+		};
 
 		// Getters
 		int		getIndexCreateNewContact() const;
 
 		// Setters
 		void	setIndexCreateNewContact(int index);
+
+		// Others
+		void	addContact(PhoneBook &myBook);
+		void	showRepo(PhoneBook myBook);
 };
 
 #endif
