@@ -6,7 +6,7 @@
 #    By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 15:21:51 by yohurteb          #+#    #+#              #
-#    Updated: 2024/11/04 08:36:54 by yohurteb         ###   ########.fr        #
+#    Updated: 2024/11/06 08:12:14 by yohurteb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,14 +15,14 @@ NAME = phonebook
 SRC_DIR = .
 OBJ_DIR = .obj
 
-SRCS = $(SRC_DIR)/phonebook.cpp \
+SRCS = $(SRC_DIR)/main.cpp \
 	$(SRC_DIR)/method_contact.cpp \
 	$(SRC_DIR)/method_phonebook.cpp
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.cpp=.o)))
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)

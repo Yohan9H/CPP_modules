@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 14:35:55 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/05 15:51:08 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/06 08:07:50 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PHONEBOOK_HPP
 # include <iostream>
 # include <string>
+# include <iomanip>
 
 class	Contact
 {
@@ -66,7 +67,7 @@ class	PhoneBook
 
 		// Others
 		void	addContact(PhoneBook &myBook);
-		void	showRepo(PhoneBook myBook);
+		void	showRepo(PhoneBook &myBook);
 };
 
 #endif

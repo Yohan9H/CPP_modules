@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 07:18:35 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/05 16:21:45 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/06 08:28:09 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,10 @@ void	PhoneBook::setIndexCreateNewContact(int index)
 
 // Others
 
-void	PhoneBook::addContact(PhoneBook &myBook) // add verif ctr-D in getline a voir
+void	PhoneBook::addContact(PhoneBook &myBook)// add verif ctr-D in getline a voir
 {
 	std::string	input;
-	int idx = myBook.getIndexCreateNewContact();
-	if (idx > 8)
-		idx = 0;
+	int idx = myBook.getIndexCreateNewContact() % 8;
 
 	std::cout << "First Name : ";
 	std::getline(std::cin, input);
@@ -65,22 +63,40 @@ void	PhoneBook::addContact(PhoneBook &myBook) // add verif ctr-D in getline a vo
 		input = "empty";
 	myBook.tab[idx].setDarkestSecret(input);
 
-	myBook.setIndexCreateNewContact(idx + 1);
+	myBook.setIndexCreateNewContact((idx + 1) % 8);
 }
 
-void	PhoneBook::showRepo(PhoneBook myBook)
+void	PhoneBook::showRepo(PhoneBook &myBook)
 {
 	int	nb_ct = myBook.getIndexCreateNewContact();
 	std::string str;
 
-	std::cout << "=============================================\n";
-	std::cout << "|Index     |First Name|Last Name |Nick Name |\n";
-	std::cout << "=============================================\n";
-	for (int i = nb_ct; i <= 8; i++)
+	std::cout << "============================================\n";
+	std::cout << "     Index|First Name| Last Name| Nick Name \n";
+	std::cout << "============================================\n";
+	for (int i = 0; i < nb_ct; i++)
 	{
-		std::cout << "| " << i << "        |";
+		std::cout << std::setw(10) << i << "|";
+
 		str = myBook.tab[i].getFirstName();
 		if (str.length() > 10)
-		std::cout << "  ";
+			std::cout << str.substr(0, 9) << ".";
+		else
+			std::cout << std::setw(10) << std::right << str;
+		std::cout << "|";
+
+		str = myBook.tab[i].getLastName();
+		if (str.length() > 10)
+			std::cout << str.substr(0, 9) << ".";
+		else
+			std::cout << std::setw(10) << std::right << str;
+		std::cout << "|";
+
+		str = myBook.tab[i].getNickName();
+		if (str.length() > 10)
+			std::cout << str.substr(0, 9) << ".";
+		else
+			std::cout << std::setw(10) << std::right << str;
+		std::cout << std::endl;
 	}
 }
