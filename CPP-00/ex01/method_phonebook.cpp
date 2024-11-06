@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 07:18:35 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/06 08:28:09 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/06 09:28:43 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,26 @@
 
 //	Getters
 
-int		PhoneBook::getIndexCreateNewContact() const
+int		PhoneBook::getNbContact() const
 {
-	return (index_tab);
+	return (nb_contact);
+}
+
+int		PhoneBook::getIndex() const
+{
+	return (index);
 }
 
 //	Setters
 
-void	PhoneBook::setIndexCreateNewContact(int index)
+void	PhoneBook::setNbContact(int nb)
 {
-	index_tab = index;
+	nb_contact = nb;
+}
+
+void	PhoneBook::setIndex(int idx)
+{
+	index = idx;
 }
 
 // Others
@@ -31,7 +41,7 @@ void	PhoneBook::setIndexCreateNewContact(int index)
 void	PhoneBook::addContact(PhoneBook &myBook)// add verif ctr-D in getline a voir
 {
 	std::string	input;
-	int idx = myBook.getIndexCreateNewContact() % 8;
+	int idx = myBook.getIndex() % 8;
 
 	std::cout << "First Name : ";
 	std::getline(std::cin, input);
@@ -63,12 +73,16 @@ void	PhoneBook::addContact(PhoneBook &myBook)// add verif ctr-D in getline a voi
 		input = "empty";
 	myBook.tab[idx].setDarkestSecret(input);
 
-	myBook.setIndexCreateNewContact((idx + 1) % 8);
+	myBook.setIndex ((idx + 1) % 8);
+	int	increase = myBook.getNbContact();
+	if (myBook.getNbContact() < 8)
+		myBook.setNbContact(increase + 1);
+	
 }
 
 void	PhoneBook::showRepo(PhoneBook &myBook)
 {
-	int	nb_ct = myBook.getIndexCreateNewContact();
+	int	nb_ct = myBook.getNbContact();
 	std::string str;
 
 	std::cout << "============================================\n";
@@ -76,7 +90,7 @@ void	PhoneBook::showRepo(PhoneBook &myBook)
 	std::cout << "============================================\n";
 	for (int i = 0; i < nb_ct; i++)
 	{
-		std::cout << std::setw(10) << i << "|";
+		std::cout << std::setw(10) << i + 1 << "|";
 
 		str = myBook.tab[i].getFirstName();
 		if (str.length() > 10)

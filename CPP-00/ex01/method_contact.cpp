@@ -6,18 +6,13 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 07:34:13 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/04 09:56:24 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/06 09:03:13 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 
 //	Getters
-
-int	Contact::getIndexCreate() const
-{
-	return (index_create);
-}
 
 std::string	Contact::getFirstName() const
 {
@@ -46,11 +41,6 @@ std::string	Contact::getDarkestSecret() const
 
 
 // Setters
-
-void	Contact::setIndexCreate(int index)
-{
-	index_create = index;
-}
 
 void	Contact::setFirstName(std::string first)
 {

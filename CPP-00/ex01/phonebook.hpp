@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 14:35:55 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/06 08:07:50 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/06 09:25:22 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 class	Contact
 {
 	private:
-		int			index_create;
 		std::string first_name;
 		std::string	last_name;
 		std::string nickname;
@@ -32,7 +31,6 @@ class	Contact
 		};
 
 		// Getters
-		int				getIndexCreate() const;
 		std::string		getFirstName() const;
 		std::string		getLastName() const;
 		std::string		getNickName() const;
@@ -40,7 +38,6 @@ class	Contact
 		std::string		getDarkestSecret() const;
 
 		// Setters
-		void			setIndexCreate(int index);
 		void			setFirstName(std::string fisrt);
 		void			setLastName(std::string last);
 		void			setNickName(std::string nick);
@@ -52,18 +49,21 @@ class	PhoneBook
 {
 	private:
 		Contact	tab[8];
-		int		index_tab;
+		int		nb_contact;
+		int		index;
 
 	public:
-		PhoneBook(int index) : index_tab(index) {
+		PhoneBook(int nb, int index) : nb_contact(nb), index(index) {
 
 		};
 
 		// Getters
-		int		getIndexCreateNewContact() const;
+		int				getNbContact() const;
+		int				getIndex() const;
 
 		// Setters
-		void	setIndexCreateNewContact(int index);
+		void			setNbContact(int nb);
+		void			setIndex(int idx);
 
 		// Others
 		void	addContact(PhoneBook &myBook);
