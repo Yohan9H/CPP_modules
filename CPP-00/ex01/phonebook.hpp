@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 14:35:55 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/06 09:25:22 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/06 11:33:06 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include <iostream>
 # include <string>
 # include <iomanip>
+# include <sstream>
+# include <cstdlib>
 
 class	Contact
 {
@@ -66,8 +68,8 @@ class	PhoneBook
 		void			setIndex(int idx);
 
 		// Others
-		void	addContact(PhoneBook &myBook);
-		void	showRepo(PhoneBook &myBook);
+		int				addContact(PhoneBook &myBook);
+		int				showRepo(PhoneBook &myBook);
 };
 
 #endif

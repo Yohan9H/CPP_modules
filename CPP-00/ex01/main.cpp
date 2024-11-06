@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 11:58:09 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/06 09:13:47 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/06 11:31:31 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ int	main()
 			return ((std::cout << std::endl), 1);
 		if (input == "ADD")
 		{
-			myBook.addContact(myBook);
+			if (myBook.addContact(myBook) == EXIT_FAILURE)
+				return ((std::cout << std::endl), 1);
 			input = "";
 		}
 		else if (input == "SEARCH")
 		{
-			myBook.showRepo(myBook);
+			if (myBook.showRepo(myBook) == EXIT_FAILURE)
+				return ((std::cout << std::endl), 1);
 			input = "";
 		}
 		else if (input == "EXIT")

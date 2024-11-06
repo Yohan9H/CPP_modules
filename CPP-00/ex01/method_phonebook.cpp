@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 07:18:35 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/06 09:28:43 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/06 11:35:38 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,37 +38,42 @@ void	PhoneBook::setIndex(int idx)
 
 // Others
 
-void	PhoneBook::addContact(PhoneBook &myBook)// add verif ctr-D in getline a voir
+int	PhoneBook::addContact(PhoneBook &myBook)
 {
 	std::string	input;
 	int idx = myBook.getIndex() % 8;
 
 	std::cout << "First Name : ";
-	std::getline(std::cin, input);
+	if (!std::getline(std::cin, input))
+		return (EXIT_FAILURE);
 	if (input.empty() == true)
 		input = "empty";
 	myBook.tab[idx].setFirstName(input);
 
 	std::cout << "Last Name : ";
-	std::getline(std::cin, input);
+	if (!std::getline(std::cin, input))
+		return (EXIT_FAILURE);
 	if (input.empty() == true)
 		input = "empty";
 	myBook.tab[idx].setLastName(input);
 
 	std::cout << "Nick Name : ";
-	std::getline(std::cin, input);
+	if (!std::getline(std::cin, input))
+		return (EXIT_FAILURE);
 	if (input.empty() == true)
 		input = "empty";
 	myBook.tab[idx].setNickName(input);
 
 	std::cout << "Phone Number : ";
-	std::getline(std::cin, input);
+	if (!std::getline(std::cin, input))
+		return (EXIT_FAILURE);
 	if (input.empty() == true)
 		input = "empty";
 	myBook.tab[idx].setPhoneNumber(input);
 
 	std::cout << "Darkest Secret : ";
-	std::getline(std::cin, input);
+	if (!std::getline(std::cin, input))
+		return (EXIT_FAILURE);
 	if (input.empty() == true)
 		input = "empty";
 	myBook.tab[idx].setDarkestSecret(input);
@@ -77,10 +82,11 @@ void	PhoneBook::addContact(PhoneBook &myBook)// add verif ctr-D in getline a voi
 	int	increase = myBook.getNbContact();
 	if (myBook.getNbContact() < 8)
 		myBook.setNbContact(increase + 1);
-	
+
+	return (EXIT_SUCCESS);
 }
 
-void	PhoneBook::showRepo(PhoneBook &myBook)
+int	PhoneBook::showRepo(PhoneBook &myBook)
 {
 	int	nb_ct = myBook.getNbContact();
 	std::string str;
@@ -113,4 +119,44 @@ void	PhoneBook::showRepo(PhoneBook &myBook)
 			std::cout << std::setw(10) << std::right << str;
 		std::cout << std::endl;
 	}
+	
+	int	idx = -1;
+	str = "";
+	while (str.empty())
+	{
+		bool print = true;
+		idx = -1;
+		std::cout << "Index for more detail : ";
+		if (!std::getline(std::cin, str))
+			return (EXIT_FAILURE);
+		for (size_t x = 0; x < str.length(); x++)
+			if (std::isdigit(str[x]) == 0)
+			{
+				std::cout << "Bad index" << std::endl;
+				str = "";
+				print = false;
+				break;
+			}
+		std::istringstream iss(str);
+		if (!(iss >> idx) && print)
+		{
+			std::cout << "Bad index" << std::endl;
+			str = "";
+		}
+		else if ((idx < 1 || idx > nb_contact) && print)
+		{
+			std::cout << "Bad index" << std::endl;
+			str = "";
+		}
+	}
+	idx--;
+	std::cout << "----\n";
+	std::cout << "First Name : " << myBook.tab[idx].getFirstName() << std::endl;
+	std::cout << "Last Name : " << myBook.tab[idx].getLastName() << std::endl;
+	std::cout << "Nick Name : " << myBook.tab[idx].getNickName() << std::endl;
+	std::cout << "Phone Number : " << myBook.tab[idx].getPhoneNumber() << std::endl;
+	std::cout << "Darkest Secret : " << myBook.tab[idx].getDarkestSecret() << std::endl;
+	std::cout << "----\n";
+
+	return (EXIT_SUCCESS);
 }
