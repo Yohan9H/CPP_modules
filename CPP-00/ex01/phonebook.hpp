@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 14:35:55 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/06 11:33:06 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/07 09:32:26 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ class	Contact
 		std::string darkest_secret;
 
 	public:
-		Contact() {
-			
-		};
+		Contact();
 
 		// Getters
 		std::string		getFirstName() const;

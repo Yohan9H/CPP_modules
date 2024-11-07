@@ -6,11 +6,16 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 07:34:13 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/06 09:03:13 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/07 09:33:41 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
+
+Contact::Contact()
+{
+
+}
 
 //	Getters
 
