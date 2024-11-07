@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 07:52:01 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/07 08:43:23 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/07 09:55:10 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 int	main()
 {
-	Zombie	*p_zombie = newZombie("Fred");
+	Zombie	*p_zombie = zombieHorde(10, "Fred");
 
-	randomChump("Jack");
-	randomChump("Paul");
-	p_zombie->announce();
-	randomChump("Jean");
-	delete p_zombie;
+	for (int i = 0; i < 9; i++)
+		p_zombie[i].announce();
+	delete[] p_zombie;
 }

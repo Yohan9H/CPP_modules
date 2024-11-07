@@ -6,19 +6,18 @@
 #    By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 15:21:51 by yohurteb          #+#    #+#              #
-#    Updated: 2024/11/07 07:51:59 by yohurteb         ###   ########.fr        #
+#    Updated: 2024/11/07 09:48:20 by yohurteb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = brainz
+NAME = brainz_horde
 
 SRC_DIR = .
 OBJ_DIR = .obj
 
 SRCS = $(SRC_DIR)/main.cpp \
-	   $(SRC_DIR)/newZombie.cpp \
-	   $(SRC_DIR)/randomChump.cpp \
-	   $(SRC_DIR)/Zombie.cpp \
+	   $(SRC_DIR)/zombieHorde.cpp \
+	   $(SRC_DIR)/Zombie.cpp
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.cpp=.o)))
 
