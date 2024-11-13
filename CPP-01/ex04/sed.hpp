@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 08:12:35 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/13 08:33:27 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/13 10:04:35 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,4 +14,5 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <fstream>
 
