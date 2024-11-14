@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 07:58:24 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/14 08:06:09 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/14 08:39:58 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <map>
 
 class Harl
 {
