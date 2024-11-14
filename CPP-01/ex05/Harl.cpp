@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 07:58:26 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/14 09:12:13 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/14 09:34:46 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,25 @@ Harl::~Harl() {}
 
 void	Harl::complain(std::string level)
 {
-	
+	void	(Harl::*tab_fct[])(void) = {
+		&Harl::debug,
+		&Harl::info,
+		&Harl::warning,
+		&Harl::error,
+	};
+
+	std::string	tab_level[] = {
+		"DEBUG",
+		"INFO",
+		"WARNING",
+		"ERROR",
+	};
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (tab_level[i] == level)
+			(this->*tab_fct[i])();
+	}
 }
 
 
