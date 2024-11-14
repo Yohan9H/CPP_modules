@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 08:12:49 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/13 17:15:45 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/14 07:49:06 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	main(int ac, char **av)
 		return (std::cerr << "error : need three args" << std::endl, EXIT_FAILURE);
 
 	std::fstream file(av[1], std::ios::in);
-	if (!file || file.peek() == std::ifstream::traits_type::eof())
+	if (!file || file.peek() == EOF)
 		return (std::cerr << "error : file" << std::endl, EXIT_FAILURE);
 	std::string	file_replace;
 	file_replace = av[1];
