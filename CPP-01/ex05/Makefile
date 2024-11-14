@@ -6,11 +6,11 @@
 #    By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 15:21:51 by yohurteb          #+#    #+#              #
-#    Updated: 2024/11/13 15:31:54 by yohurteb         ###   ########.fr        #
+#    Updated: 2024/11/14 08:06:43 by yohurteb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = sed
+NAME = harl2.0
 
 SRC_DIR = .
 OBJ_DIR = .obj
