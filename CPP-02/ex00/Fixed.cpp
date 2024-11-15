@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:09:34 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/15 08:42:20 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/15 11:07:35 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 Fixed::Fixed()
 {
 	std::cout << "Default constructor called" << std::endl;
+	_nb = 0;
 }
 
-Fixed::Fixed(const Fixed &a) : _nb(a._nb) 
+Fixed::Fixed(const Fixed &a)
 {
 	std::cout << "Copy constructor called" << std::endl;
+	_nb = a.getRawBits();
 }
 
 Fixed::~Fixed()
@@ -28,7 +30,13 @@ Fixed::~Fixed()
 }
 
 
-// surcharge ope
+Fixed	&Fixed::operator=(const Fixed &other)
+{
+	std::cout << "Copy assignment operator called" << std::endl;
+	if (this != &other)
+		this->_nb = other.getRawBits();
+	return (*this);
+}
 
 int	Fixed::getRawBits() const 
 {

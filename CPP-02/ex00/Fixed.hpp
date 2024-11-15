@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:09:32 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/15 08:28:23 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/15 09:03:58 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ class Fixed
 		Fixed();
 		Fixed(const Fixed &cpy);
 		~Fixed();
-		// surchage de ope '=' a voir
-		
+
+		Fixed	&operator=(const Fixed &other);
 
 		int		getRawBits() const;
 		void	setRawBits(int const raw);
