@@ -6,11 +6,11 @@
 #    By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 15:21:51 by yohurteb          #+#    #+#              #
-#    Updated: 2024/11/15 11:10:43 by yohurteb         ###   ########.fr        #
+#    Updated: 2024/11/15 08:30:50 by yohurteb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = a.out
+NAME = cannon
 
 SRC_DIR = .
 OBJ_DIR = .obj
