@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:09:32 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/16 11:53:15 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/16 14:47:15 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Fixed
 		~Fixed();
 
 		Fixed	&operator=(const Fixed &other);
-		
+
 		bool	operator>(const Fixed &other) const;
 		bool	operator<(const Fixed &other) const;
 		bool	operator>=(const Fixed &other) const;
