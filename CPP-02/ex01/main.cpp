@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 11:32:03 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/15 15:35:16 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/16 08:00:58 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int main( void )
 	Fixed const c(42.42f);
 	Fixed const d(b);
 
-	std::cout << "here" << std::endl;
 	a = Fixed(1234.4321f);
 
 	std::cout << "a is " << a << std::endl;
