@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 08:17:03 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/16 08:19:54 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/16 12:10:23 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int main( void )
 	std::cout << b << std::endl;
 
 	std::cout << Fixed::max(a, b) << std::endl;
-	
+
 	return 0;
 }

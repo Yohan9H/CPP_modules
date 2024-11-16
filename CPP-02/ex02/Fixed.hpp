@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:09:32 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/16 09:06:15 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/16 11:53:15 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,16 @@ class Fixed
 
 		Fixed	&operator=(const Fixed &other);
 		
-		Fixed	&operator>(const Fixed &other);
-		Fixed	&operator<(const Fixed &other);
-		Fixed	&operator>=(const Fixed &other);
-		Fixed	&operator<=(const Fixed &other);
-		Fixed	&operator==(const Fixed &other);
-		Fixed	&operator!=(const Fixed &other);
+		bool	operator>(const Fixed &other) const;
+		bool	operator<(const Fixed &other) const;
+		bool	operator>=(const Fixed &other) const;
+		bool	operator<=(const Fixed &other) const;
+		bool	operator==(const Fixed &other) const;
+		bool	operator!=(const Fixed &other) const;
+
 		Fixed	&operator+(const Fixed &other);
 		Fixed	&operator-(const Fixed &other);
 		Fixed	&operator*(const Fixed &other);
-		Fixed	&operator/(const Fixed &other);
 		Fixed	&operator/(const Fixed &other);
 
 		Fixed	&operator--();
@@ -48,7 +48,11 @@ class Fixed
 		Fixed	&operator++();
 		Fixed	operator++(int);
 
-		Fixed	&
+		static Fixed		&min(Fixed &a, Fixed &b);
+		static const Fixed	&min(const Fixed &a, const Fixed &b);
+		static Fixed		&max(Fixed &a, Fixed &b);
+		static const Fixed	&max(const Fixed &a, const Fixed &b);
+
 
 		int		getRawBits() const;
 		void	setRawBits(int const raw);

@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:09:34 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/16 08:03:48 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/16 12:03:19 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,85 @@ std::ostream	&operator<<(std::ostream &out, const Fixed &myClass)
 	return (out << myClass.toFloat());
 }
 
+bool	Fixed::operator>(const Fixed &other) const
+{
+	return this->_nb > other._nb;
+}
+
+bool	Fixed::operator<(const Fixed &other) const
+{
+	return this->_nb < other._nb;
+}
+
+bool	Fixed::operator>=(const Fixed &other) const
+{
+	return this->_nb >= other._nb;
+}
+
+bool	Fixed::operator<=(const Fixed &other) const
+{
+	return this->_nb <= other._nb;
+}
+
+bool	Fixed::operator==(const Fixed &other) const
+{
+	return this->_nb == other._nb;
+}
+
+bool	Fixed::operator!=(const Fixed &other) const
+{
+	return this->_nb != other._nb;
+}
+
+Fixed	&Fixed::operator+(const Fixed &other)
+{
+	this->_nb += other._nb;
+	return *this;
+}
+
+Fixed	&Fixed::operator-(const Fixed &other)
+{
+	this->_nb -= other._nb;
+	return *this;
+}
+
+Fixed	&Fixed::operator*(const Fixed &other)
+{
+	this->_nb = roundf((float)(this->toFloat() * other.toFloat()) * (1 << this->_bits_frct));
+	return *this;
+}
+
+Fixed	&Fixed::operator/(const Fixed &other)
+{
+	this->_nb = roundf((float)(this->toFloat() / other.toFloat()) * (1 << this->_bits_frct));
+	return *this;
+}
+
+Fixed	&Fixed::operator--()
+{
+	this->_nb--;
+	return *this;
+}
+
+Fixed	Fixed::operator--(int)
+{
+	Fixed	tmp = *this;
+	this->_nb--;
+	return tmp;
+}
+
+Fixed	&Fixed::operator++()
+{
+	this->_nb++;
+	return *this;
+}
+
+Fixed	Fixed::operator++(int)
+{
+	Fixed	tmp = *this;
+	this->_nb++;
+	return tmp;
+}
 
 // ---------------------------- Methods ----------------------------
 int	Fixed::getRawBits() const 
@@ -79,4 +158,24 @@ float	Fixed::toFloat() const
 int		Fixed::toInt() const
 {
 	return (this->_nb >> this->_bits_frct);
+}
+
+Fixed	&Fixed::min(Fixed &a, Fixed &b)
+{
+	return (a < b) ? a : b;
+}
+
+const Fixed	&Fixed::min(const Fixed &a, const Fixed &b)
+{
+	return (a < b) ? a : b;
+}
+
+Fixed	&Fixed::max(Fixed &a, Fixed &b)
+{
+	return (a > b) ? a : b;
+}
+
+const Fixed	&Fixed::max(const Fixed &a, const Fixed &b)
+{
+	return (a > b) ? a : b;
 }
