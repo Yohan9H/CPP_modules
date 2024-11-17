@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 09:11:47 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/17 10:36:02 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/17 10:40:13 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,11 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	}
 	else
 		std::cout << "ClapTrap " << this->_name << " can't repaired." << std::endl;
+}
+
+std::string		ClapTrap::getName()
+{
+	return this->_name;
 }
 
 unsigned int	ClapTrap::getHitPoints()
