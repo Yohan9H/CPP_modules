@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 07:53:06 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/18 08:37:05 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/18 09:22:16 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,7 @@ ScavTrap	&ScavTrap::operator=(const ScavTrap &src)
 {
 	if (this != &src)
 	{
-		this->_name = src._name;
-		this->_hit_points = src._hit_points;
-		this->_energy_points = src._energy_points;
-		this->_attack_damage = src._attack_damage;
+		ScavTrap::operator=(src);
 	}
 	return *this; 
 }
@@ -57,3 +54,18 @@ ScavTrap	&ScavTrap::operator=(const ScavTrap &src)
 
 // ********************** Methods **********************
 
+void	ScavTrap::attack(const std::string &target)
+{
+	if (this->_energy_points != 0 && this->_hit_points != 0)
+	{
+		std::cout << "ScavTrap " << this->_name << " attacks " << target << " causing " << this->_attack_damage << " points of damage!" << std::endl;
+		this->_energy_points--;
+	}
+	else
+		std::cout << "ScavTrap " << this->_name << " can't attack." << std::endl;
+}
+
+void	ScavTrap::guardGate()
+{
+	std::cout << "ScavTrap " << this->_name << " is in mode Gatekeeper!" << std::endl;
+}

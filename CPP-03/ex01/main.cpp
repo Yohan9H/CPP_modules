@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 09:11:49 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/18 08:32:42 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/18 10:30:40 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,15 @@
 
 int main()
 {
-	ClapTrap robot1("Red");
+	// ClapTrap robot1("Red");
+	// ClapTrap robot2("Blue");
 	ScavTrap enemy1("E_red");
 	ScavTrap enemy2(enemy1);
 
-	// ClapTrap robot2("Blue");
+	enemy1.attack("enemy2");
+	enemy2.takeDamage(3);
+	enemy1.beRepaired(3);
+	enemy2.guardGate();
 	
 	// robot1.attack(robot2.getName());
 	// robot2.takeDamage(robot1.getAttackDamage());
