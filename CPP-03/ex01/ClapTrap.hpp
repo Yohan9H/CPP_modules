@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 09:11:45 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/17 10:40:07 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/18 07:57:41 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class ClapTrap
 
 	public:
 		ClapTrap();
-		ClapTrap(std::string);
+		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap &src);
 		~ClapTrap();
 
