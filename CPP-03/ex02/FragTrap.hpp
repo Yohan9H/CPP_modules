@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/17 09:11:49 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/18 11:43:26 by yohurteb         ###   ########.fr       */
+/*   Created: 2024/11/18 11:19:24 by yohurteb          #+#    #+#             */
+/*   Updated: 2024/11/18 11:32:13 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
 
-int main()
+class FragTrap : public ClapTrap
 {
-	ScavTrap enemy1("E_red");
-	ScavTrap enemy2("E_blue");
+	private:
+	public:
+		FragTrap();
+		FragTrap(std:: string name);
+		FragTrap(const FragTrap &src);
+		~FragTrap();
 
-	enemy1.attack("enemy2");
-	enemy2.takeDamage(200);
-	enemy1.beRepaired(3);
-	enemy2.beRepaired(3);
-	enemy2.guardGate();
-}
+		FragTrap	&operator=(const FragTrap &src);
+		void		highFivesGuys();
+};

@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 09:11:47 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/18 08:05:06 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:41:09 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,10 @@ void	ClapTrap::attack(const std::string &target)
 void	ClapTrap::takeDamage(unsigned int amount)
 {
 	std::cout << "TrapClap " << this->_name << " take " << amount << " damage!" << std::endl; 
-	this->_hit_points -= amount;
+	if (amount >= this->_hit_points)
+		this->_hit_points = 0;
+	else
+		this->_hit_points -= amount;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)

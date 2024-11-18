@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 07:53:06 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/18 11:23:03 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:22:37 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@
 ScavTrap::ScavTrap()
 	: ClapTrap()
 {
-	std::cout << "Default 'derivative' constructor called" << std::endl;
+	std::cout << "Default 'derivative Scav' constructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name)
 	: ClapTrap(name)
 {
-	std::cout << "Name 'derivative' constructor called" << std::endl;
+	std::cout << "Name 'derivative Scav' constructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &src)
 	: ClapTrap(src)
 {
-	std::cout << "Copy 'derivative' constructor called" << std::endl;
+	std::cout << "Copy 'derivative Scav' constructor called" << std::endl;
 }
 
 
@@ -37,7 +37,7 @@ ScavTrap::ScavTrap(const ScavTrap &src)
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << "Destructor 'derivative' called" << std::endl;
+	std::cout << "Destructor 'derivative Scav' called" << std::endl;
 }
 
 // ********************** Surcharge **********************

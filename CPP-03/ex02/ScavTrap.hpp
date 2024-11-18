@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/17 09:11:49 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/18 11:43:26 by yohurteb         ###   ########.fr       */
+/*   Created: 2024/11/18 07:53:11 by yohurteb          #+#    #+#             */
+/*   Updated: 2024/11/18 09:18:19 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
 
-int main()
+class ScavTrap : public ClapTrap
 {
-	ScavTrap enemy1("E_red");
-	ScavTrap enemy2("E_blue");
+	private:
+	public:
+		ScavTrap();
+		ScavTrap(std:: string name);
+		ScavTrap(const ScavTrap &src);
+		~ScavTrap();
 
-	enemy1.attack("enemy2");
-	enemy2.takeDamage(200);
-	enemy1.beRepaired(3);
-	enemy2.beRepaired(3);
-	enemy2.guardGate();
-}
+		ScavTrap	&operator=(const ScavTrap &src);
+		void		attack(const std::string &target);
+		void		guardGate();
+};
