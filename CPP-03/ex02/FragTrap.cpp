@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:18:32 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/18 11:33:40 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:48:31 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,5 @@ FragTrap	&FragTrap::operator=(const FragTrap &src)
 
 void	FragTrap::highFivesGuys()
 {
-	std::cout << "FragTrap " << this->_name << "ask high fives!" << std::endl;
+	std::cout << "FragTrap " << this->_name << " ask high fives!" << std::endl;
 }
