@@ -6,14 +6,14 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 07:53:11 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/18 15:17:37 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/19 08:44:03 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap
+class ScavTrap : virtual public ClapTrap
 {
 	private:
 	public:

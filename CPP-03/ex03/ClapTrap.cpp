@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 09:11:47 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/18 11:40:35 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/19 09:16:41 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ ClapTrap::~ClapTrap()
 {
 	std::cout << "Destructor called" << std::endl;
 }
-
 
 // ********************** Surcharge **********************
 
