@@ -1,45 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 12:36:48 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/20 09:38:03 by yohurteb         ###   ########.fr       */
+/*   Created: 2024/11/20 10:52:44 by yohurteb          #+#    #+#             */
+/*   Updated: 2024/11/20 11:08:43 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "WrongCat.hpp"
 
 // **************** Constructeur ****************
 
-Dog::Dog()
-	: Animal(),
-	  _type("dog")
+WrongCat::WrongCat()
+	: WrongAnimal(),
+	  _type("wrong_cat")
 {
-	std::cout << "Default constructor 'Dog' called" << std::endl;
+	std::cout << "Default constructor 'WrongCat' called" << std::endl;
 }
 
-Dog::Dog(const Dog &src)
-	: Animal(),
+WrongCat::WrongCat(const WrongCat &src)
+	: WrongAnimal(),
 	  _type(src._type)
 {
-	std::cout << "Copy constructor 'Dog' called" << std::endl;
+	std::cout << "Copy constructor 'WrongCat' called" << std::endl;
 }
 
 
 // **************** Destructeur ****************
 
-Dog::~Dog()
+WrongCat::~WrongCat()
 {
-	std::cout << "Destructor 'Dog' called" << std::endl;
+	std::cout << "Destructor 'WrongCat' called" << std::endl;
 }
 
 
 // **************** Surcharge ****************
 
-Dog	&Dog::operator=(const Dog &src)
+WrongCat	&WrongCat::operator=(const WrongCat &src)
 {
 	if (this != &src)
 	{
@@ -50,12 +50,12 @@ Dog	&Dog::operator=(const Dog &src)
 
 // **************** Methods ****************
 
-void	Dog::makeSound() const
+void	WrongCat::makeSound() const
 {
-	std::cout << "Waouf!" << std::endl;
+	std::cout << "Miaouuu!" << std::endl;
 }
 
-const std::string	&Dog::getType() const
+const std::string	&WrongCat::getType() const
 {
 	return this->_type;
 }

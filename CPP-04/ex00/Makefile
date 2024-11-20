@@ -6,7 +6,7 @@
 #    By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 15:21:51 by yohurteb          #+#    #+#              #
-#    Updated: 2024/11/19 12:33:04 by yohurteb         ###   ########.fr        #
+#    Updated: 2024/11/20 11:10:46 by yohurteb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ OBJ_DIR = .obj
 SRCS = $(SRC_DIR)/main.cpp \
 	   $(SRC_DIR)/Animal.cpp \
 	   $(SRC_DIR)/Cat.cpp \
-	   $(SRC_DIR)/Dog.cpp
+	   $(SRC_DIR)/Dog.cpp \
+	   $(SRC_DIR)/WrongAnimal.cpp \
+	   $(SRC_DIR)/WrongCat.cpp
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.cpp=.o)))
 

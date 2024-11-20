@@ -1,45 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 12:36:48 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/20 09:38:03 by yohurteb         ###   ########.fr       */
+/*   Created: 2024/11/20 10:52:40 by yohurteb          #+#    #+#             */
+/*   Updated: 2024/11/20 10:58:29 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "WrongAnimal.hpp"
 
 // **************** Constructeur ****************
 
-Dog::Dog()
-	: Animal(),
-	  _type("dog")
+WrongAnimal::WrongAnimal()
+	: _type("wrong_animal")
 {
-	std::cout << "Default constructor 'Dog' called" << std::endl;
+	std::cout << "Default constructor 'WrongAnimal' called" << std::endl;
 }
 
-Dog::Dog(const Dog &src)
-	: Animal(),
-	  _type(src._type)
+WrongAnimal::WrongAnimal(const WrongAnimal &src)
+	: _type(src._type)
 {
-	std::cout << "Copy constructor 'Dog' called" << std::endl;
+	std::cout << "Copy constructor 'WrongAnimal' called" << std::endl;
 }
 
 
 // **************** Destructeur ****************
 
-Dog::~Dog()
+WrongAnimal::~WrongAnimal()
 {
-	std::cout << "Destructor 'Dog' called" << std::endl;
+	std::cout << "Destructor 'WrongAnimal' called" << std::endl;
 }
 
 
 // **************** Surcharge ****************
 
-Dog	&Dog::operator=(const Dog &src)
+WrongAnimal	&WrongAnimal::operator=(const WrongAnimal &src)
 {
 	if (this != &src)
 	{
@@ -48,14 +46,15 @@ Dog	&Dog::operator=(const Dog &src)
 	return *this; 
 }
 
+
 // **************** Methods ****************
 
-void	Dog::makeSound() const
+void	WrongAnimal::makeSound() const
 {
-	std::cout << "Waouf!" << std::endl;
+	std::cout << "*** NO SOUND ***" << std::endl;
 }
 
-const std::string	&Dog::getType() const
+const std::string	&WrongAnimal::getType() const
 {
 	return this->_type;
 }
