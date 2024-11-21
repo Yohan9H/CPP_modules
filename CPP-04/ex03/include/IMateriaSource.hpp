@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 08:25:10 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/21 15:45:49 by yohurteb         ###   ########.fr       */
+/*   Created: 2024/11/21 09:35:25 by yohurteb          #+#    #+#             */
+/*   Updated: 2024/11/21 15:45:54 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,11 @@
 
 class AMateria;
 
-class MateriaSource : virtual public IMateriaSource
+class IMateriaSource
 {
-	private:
-		AMateria *_book[4];
-
 	public:
-		MateriaSource();
-		MateriaSource(const MateriaSource &src);
-		~MateriaSource();
+		virtual ~IMateriaSource();
 
-		MateriaSource &operator=(const MateriaSource &src);
-
-		void		learnMateria(AMateria *src);
-		AMateria	*createMateria(std::string const &type);
-	
+		virtual	void		learnMateria(AMateria *src) = 0;
+		virtual AMateria	*createMateria(std::string const &type) = 0;
 };

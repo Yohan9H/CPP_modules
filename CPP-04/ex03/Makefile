@@ -6,7 +6,7 @@
 #    By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 15:21:51 by yohurteb          #+#    #+#              #
-#    Updated: 2024/11/21 08:24:36 by yohurteb         ###   ########.fr        #
+#    Updated: 2024/11/21 09:35:22 by yohurteb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,12 @@ INCLUDE_DIR = include
 
 SRCS = $(SRC_DIR)/main.cpp \
 	   $(SRC_DIR)/AMateria.cpp \
-	   $(SRC_DIR)/Character.cpp \
 	   $(SRC_DIR)/Cure.cpp \
 	   $(SRC_DIR)/Ice.cpp \
-	   MateriaSource.cpp
+	   &(SRC_DIR)/IMateriaSource.cpp \
+	   &(SRC_DIR)/MateriaSource.cpp \
+	   &(SRC_DIR)/ICharacter.cpp \
+	   &(SRC_DIR)/Character.cpp
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.cpp=.o)))
 
