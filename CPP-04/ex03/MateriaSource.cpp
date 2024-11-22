@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 08:24:45 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/22 08:18:11 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/22 13:57:32 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,22 +75,29 @@ void	MateriaSource::learnMateria(AMateria *src)
 			if (this->_book[i] == NULL)
 			{
 				this->_book[i] = src;
-				std::cout << "write spell in book" << std::endl;
+				std::cout << "-> " << "write spell in book" << std::endl;
 				return ;
 			}
 		}
-
 	}
-	std::cout << "can't write spell in book" << std::endl;
+	delete src;
+	std::cout << "-> " << "can't write spell in book" << std::endl;
 }
 
 AMateria	*MateriaSource::createMateria(std::string const &src)
 {
+	if (src != "ice" && src != "cure")
+	{
+		std::cout << "-> " << "type not find" << std::endl;
+		return NULL;
+	}
+
 	for (size_t i = 0; i < 4; i++)
 	{
 		if (this->_book[i] != NULL && this->_book[i]->getType() == src)
 			return this->_book[i]->clone();
 	}
-	std::cout << "createMateria failed" << std::endl;
+
+	std::cout << "-> " << "createMateria failed" << std::endl;
 	return NULL;
 }

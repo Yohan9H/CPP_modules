@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 08:24:54 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/22 08:47:12 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/22 14:11:45 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,12 @@ Character::~Character()
 	std::cout << "Destructor 'Character' called" << std::endl;
 	for (size_t i = 0; i < 4; i++)
 	{
-		if (this->_storage[i] != NULL)    // will see if works
+		if (this->_storage[i] != NULL)
 			delete this->_storage[i]; 
+
+	}
+	for (size_t i = 0; i < 100; i++)
+	{
 		if (this->_ground[i] != NULL)
 			delete this->_ground[i];
 	}
@@ -108,18 +112,33 @@ const std::string	&Character::getName() const
 
 void	Character::equip(AMateria *m)
 {
+	if (m == NULL)
+	{
+		std::cout << "-> " << this->_name << " can't equip spell" << std::endl;
+		return ;
+	}
 	for (size_t i = 0; i < 4; i++)
 	{
 		if (this->_storage[i] == NULL)
 		{
 			this->_storage[i] = m->clone();
 			delete m;
-			std::cout << this->_name << " equip spell" << std::endl;
+			m = NULL;
+			// for (size_t j = 0; j < 100; j++)
+			// {
+			// 	if (this->_ground[j] == NULL)
+			// 	{
+			// 		this->_ground[j] = m;
+			// 	}
+			// }
+			std::cout << "-> " << this->_name << " equip spell" << std::endl;
 			return ;
 		}
 	}
 
-	std::cout << this->_name << " can't equip spell" << std::endl;
+	std::cout << "-> " << this->_name << " can't equip spell" << std::endl;
+	delete m;
+	m = NULL;
 }
 
 void	Character::unequip(int idx)
@@ -135,7 +154,7 @@ void	Character::unequip(int idx)
 				this->_ground[i] = this->_storage[idx];
 				this->_storage[idx] = NULL;
 
-				std::cout << this->_name << " unequip item" << std::endl;
+				std::cout << "-> " << this->_name << " unequip item" << std::endl;
 				return ;
 			}
 		}
@@ -144,10 +163,10 @@ void	Character::unequip(int idx)
 
 void	Character::use(int idx, ICharacter &target)
 {
-	if (idx > 4)
+	if (idx < 0 || idx >= 4)
 		return ;
 	if (this->_storage[idx] != NULL)
 		this->_storage[idx]->use(target);
 	else
-		std::cout << "spell not found" << std::endl;
+		std::cout << "-> " << "spell not found" << std::endl;
 }
