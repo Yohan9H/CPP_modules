@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 08:24:49 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/21 11:27:52 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/22 08:17:21 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,19 @@
 // ******************** Constructeur ********************
 
 Ice::Ice()
-	: AMateria(),
-	  _type("cure")
+	: AMateria("ice")
 {
 	std::cout << "Default constructor 'Ice' called" << std::endl;
 }
 
 Ice::Ice(const Ice &src)
-	: AMateria(),
-	  _type(src._type)
+	: AMateria(src.getType())
 {
 	std::cout << "Copy constructor 'Ice' called" << std::endl;
 }
 
 Ice::Ice(std::string &type)
-	: AMateria(), 
-	  _type(type)
+	: AMateria(type)
 {
 	std::cout << "Copy_string constructeur 'Ice' called" << std::endl;
 }

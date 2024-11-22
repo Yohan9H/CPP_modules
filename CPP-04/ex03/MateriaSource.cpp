@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 08:24:45 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/21 15:33:14 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/22 08:18:11 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,23 @@
 MateriaSource::MateriaSource()
 	: IMateriaSource()
 {
+	for (size_t i = 0; i < 4; i++)
+		this->_book[i] = NULL;
+
 	std::cout << "Default constructor 'MateriaSource' called" << std::endl;
 }
 
 MateriaSource::MateriaSource(const MateriaSource &src)
 	: IMateriaSource()
 {
+	for (size_t i = 0; i < 4; i++)
+	{
+		if (this->_book[i] != NULL)
+			this->_book[i] = src._book[i]->clone();
+		else
+			this->_book[i] = NULL;
+	}
+
 	std::cout << "Copy constructor 'MateriaSource' called" << std::endl;
 }
 
@@ -47,6 +58,7 @@ MateriaSource	&MateriaSource::operator=(const MateriaSource &src)
 		for (size_t i = 0; i < 4; i++)
 			this->_book[i] = src._book[i]->clone();
 	}
+	return *this;
 }
 
 
@@ -59,12 +71,15 @@ void	MateriaSource::learnMateria(AMateria *src)
 	else
 	{
 		for (size_t i = 0; i < 4; i++)
-		if (this->_book[i] != NULL)
 		{
-			this->_book[i] == src;
-			std::cout << "write spell in book" << std::endl;
-			return ;
+			if (this->_book[i] == NULL)
+			{
+				this->_book[i] = src;
+				std::cout << "write spell in book" << std::endl;
+				return ;
+			}
 		}
+
 	}
 	std::cout << "can't write spell in book" << std::endl;
 }
@@ -73,7 +88,7 @@ AMateria	*MateriaSource::createMateria(std::string const &src)
 {
 	for (size_t i = 0; i < 4; i++)
 	{
-		if (this->_book[i]->getType() == src)
+		if (this->_book[i] != NULL && this->_book[i]->getType() == src)
 			return this->_book[i]->clone();
 	}
 	std::cout << "createMateria failed" << std::endl;

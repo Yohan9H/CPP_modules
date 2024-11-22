@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 08:25:07 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/21 11:26:11 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/22 08:17:30 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 class Ice : virtual public AMateria
 {
 	private:
-		std::string _type;
-
 	public:
 		Ice();
 		Ice(const Ice &src);
 		Ice(std::string &type);
 		~Ice();
+
+		Ice	&operator=(const Ice &src);
 
 		virtual AMateria*	clone() const;
 		void				use(ICharacter &target);

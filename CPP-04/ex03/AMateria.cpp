@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 08:24:57 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/21 11:13:59 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/22 07:55:43 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@ AMateria::AMateria()
 }
 
 AMateria::AMateria(const AMateria &src)
+	: _type(src._type)
 {
-	this->_type = src._type;
 	std::cout << "Copy constructor 'AMateria' called" << std::endl;
 }
 
 AMateria::AMateria(std::string const &type)
+	: _type(type)
 {
 	std::cout << "Copy_string constructeur 'AMateria' called" << std::endl;
 }
@@ -60,5 +61,6 @@ const	std::string	&AMateria::getType() const
 
 void	AMateria::use(ICharacter &target)
 {
+	(void)target;
 	std::cout << "*Not a Character for use a Materia*" << std::endl;
 }

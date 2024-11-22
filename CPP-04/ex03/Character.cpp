@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 08:24:54 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/21 15:43:22 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/22 08:47:12 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ Character::Character(const Character &src)
 	std::cout << "Copy constructor 'Character' called" << std::endl;
 }
 
-Character::Character(std::string &name)
+Character::Character(std::string name)
 	: ICharacter(),
 	  _name(name)
 {
@@ -113,6 +113,7 @@ void	Character::equip(AMateria *m)
 		if (this->_storage[i] == NULL)
 		{
 			this->_storage[i] = m->clone();
+			delete m;
 			std::cout << this->_name << " equip spell" << std::endl;
 			return ;
 		}
@@ -143,5 +144,10 @@ void	Character::unequip(int idx)
 
 void	Character::use(int idx, ICharacter &target)
 {
-	return this->_storage[idx]->use(target);
+	if (idx > 4)
+		return ;
+	if (this->_storage[idx] != NULL)
+		this->_storage[idx]->use(target);
+	else
+		std::cout << "spell not found" << std::endl;
 }

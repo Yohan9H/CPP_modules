@@ -6,7 +6,7 @@
 #    By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 15:21:51 by yohurteb          #+#    #+#              #
-#    Updated: 2024/11/21 09:35:22 by yohurteb         ###   ########.fr        #
+#    Updated: 2024/11/22 08:01:44 by yohurteb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRCS = $(SRC_DIR)/main.cpp \
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.cpp=.o)))
 
-CXX = c++
+CXX = c++ -g
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I$(INCLUDE_DIR)
 
 $(NAME): $(OBJS)

@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:32:19 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/21 15:45:18 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/22 07:51:28 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Character : virtual public ICharacter
 	public:
 		Character();
 		Character(const Character &src);
-		Character(std::string &name);
+		Character(std::string name);
 		~Character();
 
 		Character	&operator=(const Character &src);

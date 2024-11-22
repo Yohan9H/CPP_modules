@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 08:24:52 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/21 14:21:20 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/22 08:16:56 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,19 @@
 // ******************** Constructeur ********************
 
 Cure::Cure()
-	: AMateria(),
-	  _type("cure")
+	: AMateria("cure")
 {
 	std::cout << "Default constructor 'Cure' called" << std::endl;
 }
 
 Cure::Cure(const Cure &src)
-	: AMateria(),
-	  _type(src._type)
+	: AMateria(src.getType())
 {
 	std::cout << "Copy constructor 'Cure' called" << std::endl;
 }
 
 Cure::Cure(std::string &type)
-	: AMateria(), 
-	  _type(type)
+	: AMateria(type)
 {
 	std::cout << "Copy_string constructeur 'Cure' called" << std::endl;
 }
