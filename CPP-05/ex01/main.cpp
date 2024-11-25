@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 08:19:23 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/25 15:42:18 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/25 15:47:19 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int main()
 		Bureaucrat employe("Jean", 2);
 		Form	form1("form1", 1, 10);
 
+		std::cout << form1 << "\n";
 		std::cout << employe;
 
 		// form1.beSigned(employe); // Catch if false
@@ -32,6 +33,9 @@ int main()
 
 		employe.signForm(form1);
 		form1.beSigned(employe);
+
+		std::cout << "\n";
+		std::cout << form1;
 	}
 	catch (std::exception &e)
 	{

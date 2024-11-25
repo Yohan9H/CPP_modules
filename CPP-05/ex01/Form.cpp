@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:49:29 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/25 15:38:00 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/25 15:46:03 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ std::ostream	&operator<<(std::ostream &out, const Form &src)
 		out << "signed | ";
 	else
 		out << "not signed | ";
-	out << "need grade: " << src.getGradeForSign() << " | need grade exec: " << src.getGradeForExec() << std::endl;
+	out << "need grade for sign: " << src.getGradeForSign() << " | need grade for exec: " << src.getGradeForExec() << std::endl;
 	return out;
 }
 
