@@ -99,9 +99,3 @@ void	AForm::setStatus(bool status)
 {
 	this->_status = status;
 }
-
-void	AForm::execute(Bureaucrat const &executor) const
-{
-	(void)executor;
-	std::cout << "* Not real form *" << std::endl;
-};
