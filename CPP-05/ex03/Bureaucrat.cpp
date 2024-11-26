@@ -6,11 +6,12 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 08:19:58 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/26 14:53:35 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:23:38 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
 // ********************** Constructeur **********************
 
@@ -41,9 +42,9 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade)
 {
 	std::cout << "Name and Grade constructeur called" << std::endl;
 		if (this->_grade < 1)
-			throw GradeTooHighException();
+			throw Bureaucrat::GradeTooHighException();
 		if (this->_grade > 150)
-			throw GradeTooLowException();
+			throw Bureaucrat::GradeTooLowException();
 }
 
 
@@ -63,9 +64,9 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &src)
 	{
 		this->_grade = src.getGrade();
 		if (this->_grade < 1)
-			throw GradeTooHighException();
+			throw Bureaucrat::GradeTooHighException();
 		if (this->_grade > 150)
-			throw GradeTooLowException();
+			throw Bureaucrat::GradeTooLowException();
 	}
 	return *this;
 }
@@ -93,14 +94,41 @@ void	Bureaucrat::UpGrade()
 {
 	this->_grade--;
 	if (this->_grade < 1)
-		throw GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 }
 
 void	Bureaucrat::DownGrade()
 {
 	this->_grade++;
 	if (this->_grade > 150)
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
+}
+
+void	Bureaucrat::signForm(AForm &src)
+{
+	if (this->getGrade() > src.getGradeForSign())
+		std::cout << this->getName() << " couldn't sign " << src.getName() << " because his grade is low." << std::endl;
+	else
+	{
+		src.setStatus(true);
+		std::cout << this->getName() << " signed " << src.getName() << std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(AForm const &form)
+{
+	if (form.getStatus() != true)
+	{
+		std::cout << "Form is not signed" << std::endl;
+		return ;
+	}
+	if (this->getGrade() <= form.getGradeForExec())
+	{
+		std::cout << this->getName() << " executed " << form.getName() << std::endl;
+		form.execute(*this);
+	}
+	else
+		std::cout << this->getName() << " can't execute form" << std::endl;
 }
 
 // ********************** Exceptions **********************

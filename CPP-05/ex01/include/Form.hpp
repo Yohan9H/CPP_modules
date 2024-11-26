@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:40:33 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/25 15:40:20 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/26 14:57:32 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,19 @@ class Form
 		int					getGradeForExec() const;
 		void				setStatus(bool status);
 		void				beSigned(const Bureaucrat &src);
+		
+		class	GradeTooLowException;
+		class	GradeTooHighException;
+};
+
+class Form::GradeTooLowException : public std::exception
+{
+	public:
+		const char *what() const throw();
+};
+
+class Form::GradeTooHighException : public std::exception
+{
+	public:
+		const char *what() const throw();
 };

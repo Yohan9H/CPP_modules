@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 08:19:27 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/25 11:20:28 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/26 14:52:19 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,18 @@ class Bureaucrat
 
 		void			UpGrade();
 		void			DownGrade();
+
+		class	GradeTooLowException;
+		class	GradeTooHighException;
 };
 
-class GradeTooLowException : public std::exception
+class Bureaucrat::GradeTooLowException : public std::exception
 {
 	public:
 		const char *what() const throw();
 };
 
-class GradeTooHighException : public std::exception
+class Bureaucrat::GradeTooHighException : public std::exception
 {
 	public:
 		const char *what() const throw();

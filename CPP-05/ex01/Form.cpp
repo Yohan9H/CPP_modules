@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:49:29 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/25 15:46:03 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:01:34 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ Form::Form(const std::string &name,const int &grade_for_sign, const int &grade_e
 {
 	this->_status = false;
 	if (this->_grade_for_sign < 1)
-		throw GradeTooHighException();
+		throw Form::GradeTooHighException();
 	if (this->_grade_for_sign > 150)
-		throw GradeTooLowException();
+		throw Form::GradeTooLowException();
 
 	if (this->_grade_exec < 1)
-		throw GradeTooHighException();
+		throw Form::GradeTooHighException();
 	if (this->_grade_exec > 150)
-		throw GradeTooLowException();
+		throw Form::GradeTooLowException();
 
 	std::cout << "Name and Grade constructeur called" << std::endl;
 }
@@ -117,7 +117,7 @@ int		Form::getGradeForExec() const
 void	Form::beSigned(const Bureaucrat &src)
 {
 	if (src.getGrade() > this->getGradeForSign())
-		throw GradeTooLowException();
+		throw Form::GradeTooLowException();
 	else
 	{
 		this->_status = true;
@@ -128,4 +128,14 @@ void	Form::beSigned(const Bureaucrat &src)
 void	Form::setStatus(bool status)
 {
 	this->_status = status;
+}
+
+const	char *Form::GradeTooLowException::what() const throw()
+{
+	return "Grade is too low. (Form)";
+}
+
+const	char *Form::GradeTooHighException::what() const throw()
+{
+	return "Grade is too high. (Form)";
 }

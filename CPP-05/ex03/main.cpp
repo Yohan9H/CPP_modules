@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 08:19:23 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/26 15:38:57 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:57:45 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int main()
 		form_president.execute(president);
 		president.DownGrade();
 		std::cout << president;
-		// form_president.execute(president); // throw
+		// form_president.execute(president); Throw
 		president.executeForm(form_president);
 
 		std::cout << "\n------------------\n" << std::endl;

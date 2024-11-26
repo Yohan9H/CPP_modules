@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 08:19:27 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/26 14:54:09 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/26 14:54:21 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 #include <cstdlib>
 #include <string>
 #include <exception>
-#include "Form.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -41,7 +40,8 @@ class Bureaucrat
 		void			UpGrade();
 		void			DownGrade();
 
-		void			signForm(Form &src);
+		void			signForm(AForm &src);
+		void			executeForm(AForm const &form);
 		
 		class	GradeTooLowException;
 		class	GradeTooHighException;
