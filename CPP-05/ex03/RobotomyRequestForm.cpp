@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:12:04 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/27 09:06:33 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:25:41 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,3 +84,8 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 	else
 		throw AForm::GradeTooLowException();
 };
+
+AForm	*RobotomyRequestForm::newForm(std::string target)
+{
+	return new RobotomyRequestForm(target);
+}

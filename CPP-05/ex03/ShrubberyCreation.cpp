@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 08:59:04 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/27 09:06:44 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:26:27 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,3 +109,8 @@ void	ShrubberyCreation::execute(Bureaucrat const &executor) const
 	else
 		throw AForm::GradeTooLowException();
 };
+
+AForm	*ShrubberyCreation::newForm(std::string target)
+{
+	return new ShrubberyCreation(target);
+}

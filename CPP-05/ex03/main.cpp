@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 08:19:23 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/27 10:54:12 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:14:22 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int main()
 		delete ptr;
 		std::cout << "\n------------------\n" << std::endl;
 
-		Bureaucrat builder("employe", 5);
+		Bureaucrat builder("builder", 5);
 
 		ptr = paul.makeForm("robotomy request", "robot");
 
@@ -53,14 +53,14 @@ int main()
 		std::cout << *ptr;
 
 		delete ptr;
-		std::cout << "\n------------------\n" << std::endl;
+		std::cout << "\n-------- THROW TEST ----------\n" << std::endl;
 
-		Bureaucrat bad_employe("employe", 5);
+		Bureaucrat bad_employe("bad_employe", 5);
 
 		ptr = paul.makeForm("null request", "form");
 
-		ptr->beSigned(builder);
-		builder.executeForm(*ptr);
+		ptr->beSigned(bad_employe);
+		bad_employe.executeForm(*ptr);
 		std::cout << *ptr;
 
 		delete ptr;

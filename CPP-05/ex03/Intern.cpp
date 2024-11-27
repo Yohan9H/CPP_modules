@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 13:48:29 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/27 10:36:09 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:17:41 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,53 +49,30 @@ Intern	&Intern::operator=(const Intern &src)
 
 // ********************** Methods **********************
 
-PresidentialPardonForm *makePresidentialPardonForm()
-{
-	return new PresidentialPardonForm();
-}
-
-RobotomyRequestForm *makeRobotomyForm()
-{
-	return new RobotomyRequestForm();
-}
-
-ShrubberyCreation *makeShruberryForm()
-{
-	return new ShrubberyCreation();
-}
-
 AForm	*Intern::makeForm(std::string name, std::string target)
 {
-	std::string tab[3] = {"presidential request", "robotomy request", "shrubbery request"};
-	AForm		*form = NULL;
-	int			choice = -1;
+	AForm			*form = NULL;
+	std::string 	tab[3] = {"presidential request", "robotomy request", "shrubbery request"};
+	AForm*	(*methods[])(std::string target) = 
+	{
+		&PresidentialPardonForm::newForm,
+		&RobotomyRequestForm::newForm,
+		&ShrubberyCreation::newForm
+	};
 
-	for (size_t i = 0; i < 3; ++i)
+	for (size_t i = 0; i < 3; i++)
 	{
-		if (name == tab[i])
-			choice = i;
+		if (tab[i] == name)
+		{
+			form = methods[i](target);
+			std::cout << "Intern create new form" << std::endl;	
+			return form;
+		}
 	}
-	
-	switch (choice)
-	{
-		case 0:
-			form = new PresidentialPardonForm(target);
-			break;
-		case 1:
-			form = new RobotomyRequestForm(target);
-			break;
-		case 2:
-			form = new ShrubberyCreation(target);
-			break;
-		default:
-			throw Intern::BadName();
-	}
-	std::cout << "Intern create " << form->getName() << std::endl;
-	
-	return form;
+	throw Intern::BadName();
 }
 
 const char *Intern::BadName::what() const throw()
 {
-	return "Bad Name";
+	return "Type form is not good (Intern)";
 }

@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:01:12 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/27 09:06:21 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:30:56 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,3 +76,8 @@ void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 	else
 		throw AForm::GradeTooLowException();
 };
+
+AForm	*PresidentialPardonForm::newForm(std::string target)
+{
+	return new PresidentialPardonForm(target);
+}
