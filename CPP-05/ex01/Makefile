@@ -6,7 +6,7 @@
 #    By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 15:21:51 by yohurteb          #+#    #+#              #
-#    Updated: 2024/11/25 15:17:30 by yohurteb         ###   ########.fr        #
+#    Updated: 2024/11/27 09:14:08 by yohurteb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = a.out
 SRC_DIR = .
 OBJ_DIR = .obj
 
-INCLUDE_DIR = include
+INCLUDE_DIR = ./include
 
 SRCS = $(SRC_DIR)/main.cpp \
 	   $(SRC_DIR)/Bureaucrat.cpp \

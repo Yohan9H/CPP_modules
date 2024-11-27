@@ -19,6 +19,7 @@ class AForm
 {
 	private:
 		const std::string	_name;
+		const std::string	_target;
 		bool				_status;
 		const	int			_grade_for_sign;
 		const	int			_grade_exec;
@@ -27,17 +28,19 @@ class AForm
 		AForm();
 		AForm(const AForm &src);
 		AForm(const std::string &name);
+		AForm(std::string name, std::string target, int exec, int sign);
 		virtual ~AForm();
 
 		AForm					&operator=(const AForm &src);
 		friend	std::ostream	&operator<<(std::ostream &out, const AForm &src);
 
 		virtual std::string		getName() const;
+		virtual std::string		getTarget() const;
 		virtual bool			getStatus() const;
 		virtual int				getGradeForSign() const;
 		virtual int				getGradeForExec() const;
 		virtual void			setStatus(bool status);
-		virtual void			beSigned(const Bureaucrat &src) = 0;
+		virtual void			beSigned(const Bureaucrat &src);
 		virtual void			execute(Bureaucrat const &executor) const = 0;
 
 		class	GradeTooLowException;

@@ -6,7 +6,7 @@
 #    By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 15:21:51 by yohurteb          #+#    #+#              #
-#    Updated: 2024/11/26 10:53:29 by yohurteb         ###   ########.fr        #
+#    Updated: 2024/11/27 09:30:53 by yohurteb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,14 +15,15 @@ NAME = a.out
 SRC_DIR = .
 OBJ_DIR = .obj
 
-INCLUDE_DIR = include
+INCLUDE_DIR = ./include
 
 SRCS = $(SRC_DIR)/main.cpp \
 	   $(SRC_DIR)/AForm.cpp \
 	   $(SRC_DIR)/Bureaucrat.cpp \
 	   $(SRC_DIR)/PresidentialPardonForm.cpp \
 	   $(SRC_DIR)/ShrubberyCreation.cpp \
-	   $(SRC_DIR)/RobotomyRequestForm.cpp
+	   $(SRC_DIR)/RobotomyRequestForm.cpp \
+	   $(SRC_DIR)/Intern.cpp 
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.cpp=.o)))
 

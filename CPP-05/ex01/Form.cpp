@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:49:29 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/26 15:01:34 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/27 08:04:14 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ Form::Form(const Form &src)
 	  _grade_for_sign(src._grade_for_sign),
 	  _grade_exec(src._grade_exec)
 {
+	*this = src;
 	std::cout << "Copy constructeur called" << std::endl;
 }
 

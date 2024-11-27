@@ -16,6 +16,7 @@
 
 AForm::AForm()
 	: _name("form"),
+	  _target("default"),
 	  _status(false),
 	  _grade_for_sign(10),
 	  _grade_exec(3)
@@ -25,15 +26,19 @@ AForm::AForm()
 
 AForm::AForm(const AForm &src)
 	: _name(src._name),
+	  _target(src._target),
 	  _status(src._status),
 	  _grade_for_sign(src._grade_for_sign),
 	  _grade_exec(src._grade_exec)
 {
+	*this = src;
 	std::cout << "Copy constructeur called" << std::endl;
 }
 
+
 AForm::AForm(const std::string &name)
 	: _name(name),
+	  _target("default"),
 	  _status(false),
 	  _grade_for_sign(10),
 	  _grade_exec(3)
@@ -41,6 +46,15 @@ AForm::AForm(const std::string &name)
 	std::cout << "Name constructeur called" << std::endl;
 }
 
+AForm::AForm(std::string name, std::string target, int exec, int sign)
+	: _name(name),
+	  _target(target),
+	  _status(false),
+	  _grade_for_sign(sign),
+	  _grade_exec(exec)
+{
+	std::cout << "All para constructeur called" << std::endl;
+}
 
 // ********************** Destructeur **********************
 
@@ -68,7 +82,7 @@ std::ostream	&operator<<(std::ostream &out, const AForm &src)
 		out << "signed | ";
 	else
 		out << "not signed | ";
-	out << "need grade: " << src.getGradeForSign() << " | need grade exec: " << src.getGradeForExec() << std::endl;
+	out << "need grade sign: " << src.getGradeForSign() << " | need grade exec: " << src.getGradeForExec() << std::endl;
 	return out;
 }
 
@@ -78,6 +92,11 @@ std::ostream	&operator<<(std::ostream &out, const AForm &src)
 std::string	AForm::getName() const
 {
 	return (this->_name);
+}
+
+std::string	AForm::getTarget() const
+{
+	return (this->_target);
 }
 
 bool	AForm::getStatus() const
@@ -98,6 +117,17 @@ int		AForm::getGradeForExec() const
 void	AForm::setStatus(bool status)
 {
 	this->_status = status;
+}
+
+void	AForm::beSigned(const Bureaucrat &src)
+{
+	if (src.getGrade() > this->getGradeForSign())
+		throw AForm::GradeTooLowException();
+	else
+	{
+		this->_status = true;
+		std::cout << this->getName() << " signed by " << src.getName() << std::endl;
+	}
 }
 
 const	char *AForm::GradeTooLowException::what() const throw()

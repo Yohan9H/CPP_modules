@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 13:50:35 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/26 13:54:14 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:38:14 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,13 @@ class Intern
 
 		Intern	&operator=(const Intern &src);
 
-		AForm	*makeForm(std::string &name_, std::string &target);
+		AForm	*makeForm(std::string name, std::string target);
+		
+		class	BadName;
+};
+
+class Intern::BadName : public std::exception
+{
+	public:
+		const char *what() const throw();		
 };
