@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 08:59:04 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/26 15:40:38 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/27 09:06:44 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,19 @@
 // ********************** Constructeur **********************
 
 ShrubberyCreation::ShrubberyCreation()
-	: AForm(),
-	 _name("form"),
-	  _status(false),
-	  _grade_for_sign(145),
-	  _grade_exec(137)
+	: AForm("form_shrubbery", "default", 137, 145)
 {
 	std::cout << "Default constructeur 'ShrubberyCreation' called" << std::endl;
 }
 
 ShrubberyCreation::ShrubberyCreation(const ShrubberyCreation &src)
-	: AForm(),
-	 _name(src._name),
-	  _status(src._status),
-	  _grade_for_sign(src._grade_for_sign),
-	  _grade_exec(src._grade_exec)
+	: AForm(src)
 {
 	std::cout << "Copy constructeur 'ShrubberyCreation' called" << std::endl;
 }
 
-ShrubberyCreation::ShrubberyCreation(const std::string &name)
-	: AForm(),
-	 _name(name),
-	  _status(false),
-	  _grade_for_sign(145),
-	  _grade_exec(137)
+ShrubberyCreation::ShrubberyCreation(const std::string &target)
+	: AForm("form_shrubbery", target, 137, 145)
 {
 	std::cout << "Name constructeur 'ShrubberyCreation' called" << std::endl;
 }
@@ -58,10 +46,7 @@ ShrubberyCreation::~ShrubberyCreation()
 
 ShrubberyCreation	&ShrubberyCreation::operator=(const ShrubberyCreation &src)
 {
-	if (this != &src)
-	{
-		this->_status = src._status;
-	}
+	(void)src;
 	return *this;
 }
 
@@ -72,48 +57,12 @@ std::ostream	&operator<<(std::ostream &out, const ShrubberyCreation &src)
 		out << "signed | ";
 	else
 		out << "not signed | ";
-	out << "need grade: " << src.getGradeForSign() << " | need grade exec: " << src.getGradeForExec() << std::endl;
+	out << "need grade sign: " << src.getGradeForSign() << " | need grade exec: " << src.getGradeForExec() << std::endl;
 	return out;
 }
 
 
 // ********************** Methods **********************
-
-std::string	ShrubberyCreation::getName() const
-{
-	return (this->_name);
-}
-
-bool	ShrubberyCreation::getStatus() const
-{
-	return (this->_status);
-}
-
-int		ShrubberyCreation::getGradeForSign() const
-{
-	return (this->_grade_for_sign);
-}
-
-int		ShrubberyCreation::getGradeForExec() const
-{
-	return (this->_grade_exec);
-}
-
-void	ShrubberyCreation::beSigned(const Bureaucrat &src)
-{
-	if (src.getGrade() > this->getGradeForSign())
-		throw AForm::GradeTooLowException();
-	else
-	{
-		this->_status = true;
-		std::cout << this->getName() << " signed by " << src.getName() << std::endl;
-	}
-}
-
-void	ShrubberyCreation::setStatus(bool status)
-{
-	this->_status = status;
-}
 
 void	ShrubberyCreation::execute(Bureaucrat const &executor) const
 {
@@ -124,7 +73,7 @@ void	ShrubberyCreation::execute(Bureaucrat const &executor) const
 	}
 	if (executor.getGrade() <= this->getGradeForExec())
 	{
-		std::string name_file = executor.getName() + "_shrubbery";
+		std::string name_file = this->getTarget() + "_shrubbery";
 		std::ofstream file(name_file.c_str(), std::ios::out);
 		file << "                                                         ." << std::endl;
 		file << "                                              .         ;  " << std::endl;

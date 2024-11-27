@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:12:04 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/26 15:40:41 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/27 09:06:33 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,19 @@
 // ********************** Constructeur **********************
 
 RobotomyRequestForm::RobotomyRequestForm()
-	: AForm(),
-	 _name("form"),
-	  _status(false),
-	  _grade_for_sign(72),
-	  _grade_exec(45)
+	: AForm("form_robotomy", "default", 45, 72)
 {
 	std::cout << "Default constructeur 'RobotomyRequestForm' called" << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src)
-	: AForm(),
-	 _name(src._name),
-	  _status(src._status),
-	  _grade_for_sign(src._grade_for_sign),
-	  _grade_exec(src._grade_exec)
+	: AForm(src)
 {
 	std::cout << "Copy constructeur 'RobotomyRequestForm' called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string &name)
-	: AForm(),
-	 _name(name),
-	  _status(false),
-	  _grade_for_sign(72),
-	  _grade_exec(45)
+RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
+	: AForm("form_robotomy", target, 45, 72)
 {
 	std::cout << "Name constructeur 'RobotomyRequestForm' called" << std::endl;
 }
@@ -59,10 +47,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm &src)
 {
-	if (this != &src)
-	{
-		this->_status = src._status;
-	}
+	(void)src;
 	return *this;
 }
 
@@ -73,49 +58,12 @@ std::ostream	&operator<<(std::ostream &out, const RobotomyRequestForm &src)
 		out << "signed | ";
 	else
 		out << "not signed | ";
-	out << "need grade: " << src.getGradeForSign() << " | need grade exec: " << src.getGradeForExec() << std::endl;
+	out << "need grade sign: " << src.getGradeForSign() << " | need grade exec: " << src.getGradeForExec() << std::endl;
 	return out;
 }
 
 
 // ********************** Methods **********************
-
-std::string	RobotomyRequestForm::getName() const
-{
-	return (this->_name);
-}
-
-bool	RobotomyRequestForm::getStatus() const
-{
-	return (this->_status);
-}
-
-int		RobotomyRequestForm::getGradeForSign() const
-{
-	return (this->_grade_for_sign);
-}
-
-int		RobotomyRequestForm::getGradeForExec() const
-{
-	return (this->_grade_exec);
-}
-
-void	RobotomyRequestForm::beSigned(const Bureaucrat &src)
-{
-	if (src.getGrade() > this->getGradeForSign())
-		throw AForm::GradeTooLowException();
-	else
-	{
-		this->_status = true;
-		std::cout << this->getName() << " signed by " << src.getName() << std::endl;
-	}
-}
-
-void	RobotomyRequestForm::setStatus(bool status)
-{
-	this->_status = status;
-}
-
 
 void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
@@ -129,9 +77,9 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 		std::cout << "*** DRILL DRILL DRILL ***" << std::endl;
 		std::srand(std::time(0));
 		if (std::rand() % 2 == 0)
-			std::cout << this->getName() << " has been robotomized !" << std::endl;
+			std::cout << this->getTarget() << " has been robotomized !" << std::endl;
 		else
-			std::cout << this->getName() << " FAILED !" << std::endl;
+			std::cout << this->getTarget() << " FAILED !" << std::endl;
 	}
 	else
 		throw AForm::GradeTooLowException();

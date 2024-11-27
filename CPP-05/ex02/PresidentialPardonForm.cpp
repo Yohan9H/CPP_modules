@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:01:12 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/26 15:35:51 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/27 09:06:21 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,19 @@
 // ********************** Constructeur **********************
 
 PresidentialPardonForm::PresidentialPardonForm()
-	: AForm(),
-	  _name("form"),
-	  _status(false),
-	  _grade_for_sign(25),
-	  _grade_exec(5)
+	: AForm("form_president", "default", 5, 25)
 {
 	std::cout << "Default constructeur 'PresidentPardonForm' called" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &src)
-	: AForm(),
-	  _name(src._name),
-	  _status(src._status),
-	  _grade_for_sign(src._grade_for_sign),
-	  _grade_exec(src._grade_exec)
+	: AForm(src)
 {
 	std::cout << "Copy constructeur 'PresidentPardonForm' called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string &name)
-	: AForm(),
-	 _name(name),
-	  _status(false),
-	  _grade_for_sign(25),
-	  _grade_exec(5)
+PresidentialPardonForm::PresidentialPardonForm(const std::string &target)
+	: AForm("form_president", target, 5, 25)
 {
 	std::cout << "Name constructeur 'PresidentPardonForm' called" << std::endl;
 }
@@ -58,10 +46,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPardonForm &src)
 {
-	if (this != &src)
-	{
-		this->_status = src._status;
-	}
+	(void)src;
 	return *this;
 }
 
@@ -72,48 +57,12 @@ std::ostream	&operator<<(std::ostream &out, const PresidentialPardonForm &src)
 		out << "signed | ";
 	else
 		out << "not signed | ";
-	out << "need grade: " << src.getGradeForSign() << " | need grade exec: " << src.getGradeForExec() << std::endl;
+	out << "need grade sign: " << src.getGradeForSign() << " | need grade exec: " << src.getGradeForExec() << std::endl;
 	return out;
 }
 
 
 // ********************** Methods **********************
-
-std::string	PresidentialPardonForm::getName() const
-{
-	return (this->_name);
-}
-
-bool	PresidentialPardonForm::getStatus() const
-{
-	return (this->_status);
-}
-
-int		PresidentialPardonForm::getGradeForSign() const
-{
-	return (this->_grade_for_sign);
-}
-
-int		PresidentialPardonForm::getGradeForExec() const
-{
-	return (this->_grade_exec);
-}
-
-void	PresidentialPardonForm::beSigned(const Bureaucrat &src)
-{
-	if (src.getGrade() > this->getGradeForSign())
-		throw AForm::GradeTooLowException();
-	else
-	{
-		this->_status = true;
-		std::cout << this->getName() << " signed by " << src.getName() << std::endl;
-	}
-}
-
-void	PresidentialPardonForm::setStatus(bool status)
-{
-	this->_status = status;
-}
 
 void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
@@ -123,7 +72,7 @@ void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 		throw AForm::FormNotSign();
 	}
 	if (executor.getGrade() <= this->getGradeForExec())
-		std::cout << this->getName() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
+		std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 	else
 		throw AForm::GradeTooLowException();
 };

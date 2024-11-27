@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 08:19:58 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/26 15:07:41 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/27 09:05:28 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	Bureaucrat::DownGrade()
 void	Bureaucrat::signForm(AForm &src)
 {
 	if (this->getGrade() > src.getGradeForSign())
-		std::cout << this->getName() << " couldn't sign " << src.getName() << " because his grade is low." << std::endl;
+		std::cout << this->getName() << " couldn't sign " << src.getTarget() << " because his grade is low." << std::endl;
 	else
 	{
 		src.setStatus(true);
