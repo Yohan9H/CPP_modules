@@ -32,7 +32,6 @@ class AForm
 		virtual ~AForm();
 
 		AForm					&operator=(const AForm &src);
-		friend	std::ostream	&operator<<(std::ostream &out, const AForm &src);
 
 		virtual std::string		getName() const;
 		virtual std::string		getTarget() const;
@@ -47,6 +46,8 @@ class AForm
 		class	GradeTooHighException;
 		class	FormNotSign;
 };
+
+std::ostream	&operator<<(std::ostream &out, const AForm &src);
 
 class AForm::GradeTooLowException : public std::exception
 {

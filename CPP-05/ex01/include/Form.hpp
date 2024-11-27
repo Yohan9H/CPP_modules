@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:40:33 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/11/26 14:57:32 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:52:48 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ class Form
 		~Form();
 
 		Form	&operator=(const Form &src);
-		friend	std::ostream &operator<<(std::ostream &out, const Form &src);
 
 		std::string			getName() const;
 		bool				getStatus() const;
@@ -43,6 +42,8 @@ class Form
 		class	GradeTooLowException;
 		class	GradeTooHighException;
 };
+
+std::ostream &operator<<(std::ostream &out, const Form &src);
 
 class Form::GradeTooLowException : public std::exception
 {
