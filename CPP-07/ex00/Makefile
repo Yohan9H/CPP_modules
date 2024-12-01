@@ -6,19 +6,18 @@
 #    By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 15:21:51 by yohurteb          #+#    #+#              #
-#    Updated: 2024/11/28 13:24:17 by yohurteb         ###   ########.fr        #
+#    Updated: 2024/12/01 10:22:37 by yohurteb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = convert
+NAME = a.out
 
 SRC_DIR = .
 OBJ_DIR = .obj
 
 INCLUDE_DIR = ./include
 
-SRCS = $(SRC_DIR)/main.cpp \
-	   $(SRC_DIR)/ScalarConverter.cpp
+SRCS = $(SRC_DIR)/main.cpp
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.cpp=.o)))
 
