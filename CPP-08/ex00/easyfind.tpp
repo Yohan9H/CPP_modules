@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   easyfind.tpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 10:41:01 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/12/01 11:32:06 by yohurteb         ###   ########.fr       */
+/*   Created: 2024/12/01 08:20:52 by yohurteb          #+#    #+#             */
+/*   Updated: 2024/12/01 09:36:20 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#include <iostream>
-#include <exception>
+#include "easyfind.hpp"
 
-template <typename T>
-void	display_i(T c)
+
+template <typename T, typename entier>
+void	easyfind(T v1, entier i)
 {
-	std::cout << "-> " << c << " (in iter)" << std::endl;
+	if (std::find(v1.begin(), v1.end(), i) != v1.end())
+		std::cout << "-> " << i <<" found" << std::endl;
+	else
+		std::cout << "-> " << i << " not found" << std::endl;
 }
-
-template <typename T1, typename T2, typename T3>
-void	iter(T1 &tab, T2 lenght, T3 function)
-{
-	for (T2 i = 0; i < lenght; i++)
-		function(tab[i]);
-}
-
