@@ -6,23 +6,24 @@
 #    By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 15:21:51 by yohurteb          #+#    #+#              #
-#    Updated: 2024/12/01 08:47:06 by yohurteb         ###   ########.fr        #
+#    Updated: 2024/11/28 13:24:17 by yohurteb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = easyfind
+NAME = convert
 
 SRC_DIR = .
 OBJ_DIR = .obj
 
-INCLUDE = ./include
+INCLUDE_DIR = ./include
 
-SRCS = $(SRC_DIR)/main.cpp
+SRCS = $(SRC_DIR)/main.cpp \
+	   $(SRC_DIR)/ScalarConverter.cpp
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.cpp=.o)))
 
 CXX = c++ -g
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I$(INCLUDE)
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I$(INCLUDE_DIR)
 
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
