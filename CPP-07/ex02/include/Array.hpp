@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 11:38:19 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/12/02 11:04:58 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:12:45 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class Array
 
 		Array			&operator=(const Array &src);
 		T				&operator[](unsigned int idx);
+		const T			&operator[](unsigned int idx) const;
 
 		unsigned int	size() const;
 };

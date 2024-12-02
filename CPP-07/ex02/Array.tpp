@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 11:38:14 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/12/02 11:42:26 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:13:22 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,13 @@ T	&Array<T>::operator[](unsigned int idx)
 	return this->_tab[idx];
 }
 
+template <typename T>
+const T	&Array<T>::operator[](unsigned int idx) const
+{
+	if (!(idx >= 0 && idx < this->size()))
+		throw InvalidIndex();
+	return this->_tab[idx];
+}
 
 
 template <typename T>
