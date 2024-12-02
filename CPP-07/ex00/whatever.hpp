@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 09:54:45 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/12/01 10:24:32 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:51:17 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@
 #include <cstdlib>
 
 
-template <typename swap>
-void	ft_swap(swap &a, swap &b)
+template <typename T>
+void	swap(T &a, T &b)
 {
-	swap tmp;
+	T tmp;
 
 	tmp = a;
 	a = b;
 	b = tmp; 
 }
 
-template <typename min>
-min		ft_min(min a, min b)
+template <typename T>
+T		min(T a, T b)
 {
 	if (a < b)
 		return a;
@@ -35,8 +35,8 @@ min		ft_min(min a, min b)
 		return b;
 }
 
-template <typename max>
-max		ft_max(max a, max b)
+template <typename T>
+T		max(T a, T b)
 {
 	if (a > b)
 		return a;
