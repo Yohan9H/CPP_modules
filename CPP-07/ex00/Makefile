@@ -6,7 +6,7 @@
 #    By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 15:21:51 by yohurteb          #+#    #+#              #
-#    Updated: 2024/12/01 10:22:37 by yohurteb         ###   ########.fr        #
+#    Updated: 2024/12/02 14:09:19 by yohurteb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ OBJ_DIR = .obj
 
 INCLUDE_DIR = ./include
 
-SRCS = $(SRC_DIR)/main.cpp
+SRCS = $(SRC_DIR)/ex00.cpp
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.cpp=.o)))
 
