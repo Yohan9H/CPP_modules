@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 08:20:50 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/12/02 17:08:43 by yohurteb         ###   ########.fr       */
+/*   Created: 2024/12/02 17:11:29 by yohurteb          #+#    #+#             */
+/*   Updated: 2024/12/02 17:18:55 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
-#include <string>
 #include <cstdlib>
+#include <string>
+#include <exception>
 #include <algorithm>
 #include <vector>
-#include <list>
-#include <deque>
-#include "easyfind.tpp"
+
+class Span
+{
+	private:
+		std::vector<unsigned int>	vec;
+
+	public:
+		Span();
+		Span(const Span &src);
+		Span(unsigned int N);
+		~Span();
+
+		Span	&operator=(const Span &src);
+
+		void	addNumber(); //Si N existe deja dans vec, jete une execption ???
+		
+};

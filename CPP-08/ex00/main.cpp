@@ -6,12 +6,11 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 08:20:47 by yohurteb          #+#    #+#             */
-/*   Updated: 2024/12/01 09:46:06 by yohurteb         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:08:39 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "easyfind.hpp"
-#include "easyfind.tpp"
 
 int	main()
 {
@@ -41,7 +40,6 @@ int	main()
 	queue.push_back(4);
 	queue.push_back(5);
 	queue.push_back(6);
-
 
 
 
