@@ -6,11 +6,11 @@
 #    By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 15:21:51 by yohurteb          #+#    #+#              #
-#    Updated: 2024/12/03 07:17:25 by yohurteb         ###   ########.fr        #
+#    Updated: 2024/12/06 09:22:35 by yohurteb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = easyfind
+NAME = span
 
 SRC_DIR = .
 OBJ_DIR = .obj
