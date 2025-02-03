@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:11:55 by yohurteb          #+#    #+#             */
-/*   Updated: 2025/02/03 17:27:47 by yohurteb         ###   ########.fr       */
+/*   Updated: 2025/02/03 18:04:30 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_file(std::ifstream &file)
 	}
 }
 
-std::map<std::string, int>	create_map()
+std::map<std::string, double>	create_map()
 {
 	std::ifstream file_csv("data.csv");
 	if (!file_csv.is_open())
@@ -30,7 +30,7 @@ std::map<std::string, int>	create_map()
 		std::exit(EXIT_FAILURE);
 	}
 
-	std::map<std::string, int> map_data;
+	std::map<std::string, double> map_data;
 	std::string line;
 	std::getline(file_csv, line); // skip first line
 	while (std::getline(file_csv, line))
@@ -40,8 +40,8 @@ std::map<std::string, int>	create_map()
 		{
 			std::string date = line.substr(0, pos);
 			std::string valeur = line.substr(pos + 1);
-			int	val_int = std::atoi(valeur.c_str());
-			map_data.insert(std::pair<std::string, int>(date, val_int));
+			double val_d = std::atof(valeur.c_str());
+			map_data.insert(std::pair<std::string, double>(date, val_d));
 		}
 	}
 	file_csv.close();
@@ -90,7 +90,6 @@ void	check_date(std::string date)
 		std::cerr << "Error: bad input => " << date << std::endl;
 		throw false;
 	}
-	std::cout << date << "|" << std::endl;
 }
 
 
@@ -123,12 +122,23 @@ double	check_value(std::string value)
 	return val;
 }
 
-void	exchange(std::map<std::string, int> data, std::string date, double value)
+void	exchange(std::map<std::string, double> data, std::string date, double value)
 {
-	
+	double	res;
+	std::map<std::string, double>::iterator it = data.lower_bound(date);
+	if (it->first == date)
+	{
+		res = it->second * value;
+	}
+	else
+	{
+		it--;
+		res = it->second * value;
+	}
+	std::cout << date << " => " << value << " = " << res << std::endl; 
 }
 
-void	prep_exchange(std::ifstream &file, std::map<std::string, int> data)
+void	prep_exchange(std::ifstream &file, std::map<std::string, double> data)
 {
 	std::string line;
 	while (std::getline(file, line))
@@ -162,7 +172,7 @@ int	main(int ac, char **av)
 {
 	if (ac == 2)
 	{
-		std::map<std::string, int> data = create_map();
+		std::map<std::string, double> data = create_map();
 
 		std::ifstream file(av[1]);
 		check_file(file);
@@ -171,6 +181,7 @@ int	main(int ac, char **av)
 	else
 	{
 		std::cerr << "Error: Need file" << std::endl;
-		return(EXIT_FAILURE);
+		return EXIT_FAILURE;
 	}
+	return EXIT_SUCCESS;
 }
