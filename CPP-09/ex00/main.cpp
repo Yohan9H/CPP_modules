@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:11:55 by yohurteb          #+#    #+#             */
-/*   Updated: 2025/02/03 18:04:30 by yohurteb         ###   ########.fr       */
+/*   Updated: 2025/02/04 09:23:46 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ void	prep_exchange(std::ifstream &file, std::map<std::string, double> data)
 				check_date(date);
 
 				std::string value = line.substr(pos + 1);
-				int val = check_value(value);
+				double val = check_value(value);
 
 				exchange(data, date, val);
 			}
@@ -163,7 +163,7 @@ void	prep_exchange(std::ifstream &file, std::map<std::string, double> data)
 		}
 		else
 		{
-			std::cerr << "bad input => " << line << std::endl;
+			std::cerr << "Error: bad input => " << line << std::endl;
 		}
 	}
 }
@@ -177,6 +177,7 @@ int	main(int ac, char **av)
 		std::ifstream file(av[1]);
 		check_file(file);
 		prep_exchange(file, data);
+		file.close();
 	}
 	else
 	{
