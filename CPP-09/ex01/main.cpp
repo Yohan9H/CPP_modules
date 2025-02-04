@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:31:20 by yohurteb          #+#    #+#             */
-/*   Updated: 2025/02/04 11:21:52 by yohurteb         ###   ########.fr       */
+/*   Updated: 2025/02/04 13:55:37 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	rpn(std::string str)
 {
 	std::string buffer = "0123456789*-+/ ";
 
-	std::deque<int> stack;
+	std::stack<int> stack;
 	std::stringstream iss(str);
 	std::string rcp;
 
@@ -29,7 +29,7 @@ void	rpn(std::string str)
 		}
 		if (std::isdigit(rcp.at(0)))
 		{
-			stack.push_back(std::atoi(rcp.c_str()));
+			stack.push(std::atoi(rcp.c_str()));
 		}
 		else if (rcp == "*" || rcp == "-" || rcp == "+" || rcp == "/")
 		{
@@ -40,17 +40,17 @@ void	rpn(std::string str)
 			}
 			else
 			{
-				int nb2 = stack.back();
-				stack.pop_back();
-				int nb1 = stack.back();
-				stack.pop_back();
+				int nb2 = stack.top();
+				stack.pop();
+				int nb1 = stack.top();
+				stack.pop();
 
 				if (rcp == "*")
-					stack.push_back(nb1 * nb2);
+					stack.push(nb1 * nb2);
 				else if (rcp == "-")
-					stack.push_back(nb1 - nb2);
+					stack.push(nb1 - nb2);
 				else if (rcp == "+")
-					stack.push_back(nb1 + nb2);
+					stack.push(nb1 + nb2);
 				else if (rcp == "/")
 				{
 					if (nb1 == 0 || nb2 == 0)
@@ -58,12 +58,12 @@ void	rpn(std::string str)
 						std::cerr << "Error: div by 0" << std::endl;
 						return;
 					}
-					stack.push_back(nb1 / nb2);
+					stack.push(nb1 / nb2);
 				}
 			}
 		}
 	}
-	std::cout << stack.back() << std::endl;
+	std::cout << stack.top() << std::endl;
 }
 
 int	main(int ac, char **av)
