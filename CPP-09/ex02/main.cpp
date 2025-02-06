@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:55:15 by yohurteb          #+#    #+#             */
-/*   Updated: 2025/02/06 16:05:31 by yohurteb         ###   ########.fr       */
+/*   Updated: 2025/02/06 16:12:37 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	FordJohnsonVec(std::vector<int>::iterator begin, std::vector<int>::iterator
 template <typename T1>
 T1	ChangeAvtoArray(char **av)
 {
-	T1 array;
-	int val;
-	char *ptr;
+	T1		array;
+	int		val_l;
+	char	*ptr;
 
 	for (int i = 1; av[i]; i++)
 	{
@@ -54,7 +54,6 @@ int	main(int ac, char **av)
 
 	try
 	{
-		
 		std::vector<int> vec = ChangeAvtoArray<std::vector<int> >(av);
 		timeVec = clock();
 		FordJohnsonVec(vec.begin(), vec.end());
