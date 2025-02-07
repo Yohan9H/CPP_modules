@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:55:15 by yohurteb          #+#    #+#             */
-/*   Updated: 2025/02/07 09:56:25 by yohurteb         ###   ########.fr       */
+/*   Updated: 2025/02/07 10:38:21 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -324,7 +324,7 @@ void	FordJohnsonVec(std::vector<int>::iterator begin, std::vector<int>::iterator
 
 	std::copy(mainChain.begin(), mainChain.end(), begin);
 }
- 
+
 template <typename T1>
 T1	ChangeAvtoArray(char **av)
 {
