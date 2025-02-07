@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohan.h <yohan.h@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:55:15 by yohurteb          #+#    #+#             */
-/*   Updated: 2025/02/06 22:03:06 by yohan.h          ###   ########.fr       */
+/*   Updated: 2025/02/07 09:56:25 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ std::deque<int> genPosDeq(int n)
 	return positions;
 }
 
-std::deque<int>::iterator binarySearch(std::deque<int>::iterator begin, std::deque<int>::iterator end, int target)
+std::deque<int>::iterator binarySearchDeq(std::deque<int>::iterator begin, std::deque<int>::iterator end, int target)
 {
 	std::deque<int>::iterator it;
 	std::iterator_traits<std::deque<int>::iterator>::difference_type count, step;
@@ -92,7 +92,7 @@ void FordJohnsonDeq(std::deque<int>::iterator begin, std::deque<int>::iterator e
 		return;
 
 	std::deque<std::pair<int, int> > pairs;
-	std::deque<int> leftover;
+	std::deque<int> odd;
 
 	std::deque<int>::iterator it = begin;
 	while (std::distance(it, end) >= 2)
@@ -104,13 +104,16 @@ void FordJohnsonDeq(std::deque<int>::iterator begin, std::deque<int>::iterator e
 		pairs.push_back(std::make_pair(first_val, second_val));
 	}
 	if (it != end)
-		leftover.push_back(*it);
+		odd.push_back(*it);
 
 	std::deque<int> mainChain;
 	for (std::deque<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); ++it)
 		mainChain.push_back(it->second);
 	if (mainChain.size() >= 2)
 		FordJohnsonDeq(mainChain.begin(), mainChain.end());
+
+
+
 
 	std::deque<int> pend;
 	for (std::deque<int>::iterator mc_it = mainChain.begin(); mc_it != mainChain.end(); ++mc_it)
@@ -149,14 +152,14 @@ void FordJohnsonDeq(std::deque<int>::iterator begin, std::deque<int>::iterator e
 			for (searchEnd = mainChain.begin(); searchEnd != mainChain.end(); ++searchEnd)
 				if (*searchEnd == t_value)
 					break;
-			std::deque<int>::iterator final_pos = binarySearch(mainChain.begin(), searchEnd, *target);
+			std::deque<int>::iterator final_pos = binarySearchDeq(mainChain.begin(), searchEnd, *target);
 			mainChain.insert(final_pos, *target);
 		}
 	}
-	if (!leftover.empty())
+	if (!odd.empty())
 	{
-		std::deque<int>::iterator final_pos = binarySearch(mainChain.begin(), mainChain.end(), *leftover.begin());
-		mainChain.insert(final_pos, *leftover.begin());
+		std::deque<int>::iterator final_pos = binarySearchDeq(mainChain.begin(), mainChain.end(), *odd.begin());
+		mainChain.insert(final_pos, *odd.begin());
 	}
 
 	std::copy(mainChain.begin(), mainChain.end(), begin);
@@ -215,7 +218,7 @@ std::vector<int> genPosVec(int n)
 	return (positions);
 }
 
-std::vector<int>::iterator binarySearch(std::vector<int>::iterator begin, std::vector<int>::iterator end, int target)
+std::vector<int>::iterator binarySearchVec(std::vector<int>::iterator begin, std::vector<int>::iterator end, int target)
 {
 	std::vector<int>::iterator it;
 	std::iterator_traits<std::vector<int>::iterator>::difference_type count, step;
@@ -243,8 +246,9 @@ void	FordJohnsonVec(std::vector<int>::iterator begin, std::vector<int>::iterator
 	if (std::distance(begin, end) <= 1)
 		return;
 	std::vector<std::pair<int, int> > pairs;
-	std::vector<int> leftover;
+	std::vector<int> odd;
 
+	// 1 - Division en pairs
 	std::vector<int>::iterator it = begin;
 	while(std::distance(it, end) >= 2)
 	{
@@ -254,15 +258,21 @@ void	FordJohnsonVec(std::vector<int>::iterator begin, std::vector<int>::iterator
 			std::swap(first_val, second_val);
 		pairs.push_back(std::make_pair(first_val, second_val));
 	}
+	//stockage des impaires
 	if (it != end)
-		leftover.push_back(*it);
+		odd.push_back(*it);
 
+	// creation mainChain 
 	std::vector<int> mainChain;
 	for (std::vector<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); ++it)
 		mainChain.push_back(it->second);
 	if (mainChain.size() >= 2)
 		FordJohnsonVec(mainChain.begin(), mainChain.end());
 
+
+
+	// 2 - Insertion 
+	//creation du pending (petit element)
 	std::vector<int> pend;
 	for (std::vector<int>::iterator mc_it = mainChain.begin(); mc_it != mainChain.end(); ++mc_it) 
 	{
@@ -276,6 +286,7 @@ void	FordJohnsonVec(std::vector<int>::iterator begin, std::vector<int>::iterator
 		}
 	}
 
+	// creation de la sequence d'insertion
 	std::vector<int> positions = genPosVec(pend.size());
 	for (int i = 0; i < static_cast<int>(positions.size()); i++)
 	{
@@ -286,6 +297,7 @@ void	FordJohnsonVec(std::vector<int>::iterator begin, std::vector<int>::iterator
 		} 
 		else
 		{
+			
 			std::advance(target, positions[i] - 1);
 			int t_value;
 			for (std::vector<std::pair<int, int> >::iterator p_it = pairs.begin(); p_it != pairs.end(); p_it++)
@@ -298,16 +310,16 @@ void	FordJohnsonVec(std::vector<int>::iterator begin, std::vector<int>::iterator
 			}
 			std::vector<int>::iterator searchEnd;
 			for (searchEnd = mainChain.begin(); searchEnd != mainChain.end(); searchEnd++)
-				if (*searchEnd == t_value)
+				if (*searchEnd == t_value) //Donne la limite pour la recherche binaire
 					break;
-			std::vector<int>::iterator final_pos = binarySearch(mainChain.begin(), searchEnd, *target);
+			std::vector<int>::iterator final_pos = binarySearchVec(mainChain.begin(), searchEnd, *target);
 			mainChain.insert(final_pos, *target);
 		}
 	}
-	if (!leftover.empty())
+	if (!odd.empty())
 	{
-		std::vector<int>::iterator final_pos = binarySearch(mainChain.begin(), mainChain.end(), *leftover.begin());
-		mainChain.insert(final_pos, *leftover.begin());
+		std::vector<int>::iterator final_pos = binarySearchVec(mainChain.begin(), mainChain.end(), *odd.begin());
+		mainChain.insert(final_pos, *odd.begin());
 	}
 
 	std::copy(mainChain.begin(), mainChain.end(), begin);
@@ -317,14 +329,13 @@ template <typename T1>
 T1	ChangeAvtoArray(char **av)
 {
 	T1		array;
-	int		val_l;
 	char	*ptr;
 
 	for (int i = 1; av[i]; i++)
 	{
 		if (!*av[i])
 			throw(1);
-		val = strtol(av[i], &ptr, 10);
+		int val = strtol(av[i], &ptr, 10);
 		if (*ptr || val < 0)
 			throw(1);
 		array.push_back(val);
@@ -345,18 +356,48 @@ int	main(int ac, char **av)
 
 	try
 	{
+		// VECTOR
 		std::vector<int> vec = ChangeAvtoArray<std::vector<int> >(av);
+		std::cout << "VECTOR Before :" << std::endl;
+		for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++)
+			std::cout << *it << " ";
+		std::cout << "\n" << std::endl;
+
 		timeVec = clock();
 		FordJohnsonVec(vec.begin(), vec.end());
 		timeVec = clock() - timeVec;
 
+		std::cout << "VECTOR After :" << std::endl;
+		for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++)
+			std::cout << *it << " ";
+		std::cout << "\n" << std::endl;
+
+
+		// DEQUE
 		std::deque<int> deq = ChangeAvtoArray<std::deque<int> >(av);
+		std::cout << "DEQUE Before :" << std::endl;
+		for (std::deque<int>::iterator it = deq.begin(); it != deq.end(); it++)
+			std::cout << *it << " ";
+		std::cout << "\n" << std::endl;
+
 		timeDeq = clock();
 		FordJohnsonDeq(deq.begin(), deq.end());
 		timeDeq = clock() - timeDeq;
+
+		std::cout << "DEQUE After :" << std::endl;
+		for (std::deque<int>::iterator it = deq.begin(); it != deq.end(); it++)
+			std::cout << *it << " ";
+		std::cout << "\n" << std::endl;
+
+		
+		// PRINT TIME
+		std::cout << "Time to process a range of " << ac - 1 << " elements with VECTOR : " << (float)timeVec * 1000 / CLOCKS_PER_SEC << " ms" << std::endl << std::endl;
+		std::cout << "Time to process a range of " << ac - 1 << " elements with DEQUE : " << (float)timeDeq * 1000 / CLOCKS_PER_SEC << " ms" << std::endl << std::endl;
 	}
 	catch(...)
 	{
 		std::cerr << "Error" << std::endl;
 	}
+
+	return EXIT_SUCCESS;
 }
