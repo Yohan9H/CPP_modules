@@ -6,11 +6,15 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:11:55 by yohurteb          #+#    #+#             */
-/*   Updated: 2025/02/04 09:23:46 by yohurteb         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:43:45 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+
+bool isBissextile(int year) {
+    return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+}
 
 void	check_file(std::ifstream &file)
 {
@@ -64,6 +68,12 @@ void	check_date(std::string date)
 
 	std::size_t pos = date.find('-');
 	std::string year = date.substr(0, pos);
+	int year_int = std::atoi(date.substr(0, pos).c_str());
+	if (year_int < 2009)
+	{
+		std::cerr << "Error: bad input => " << date << std::endl;
+		throw false;	
+	}
 	if (year.size() != 4)
 	{
 		std::cerr << "Error: bad input => " << date << std::endl;
@@ -77,7 +87,7 @@ void	check_date(std::string date)
 		throw false;
 	}
 	int month = std::atoi(date.substr(pos + 1, pos + 3).c_str());
-	if (month > 31 || month < 1)
+	if (month > 12 || month < 1)
 	{
 		std::cerr << "Error: bad input => " << date << std::endl;
 		throw false;
@@ -85,10 +95,50 @@ void	check_date(std::string date)
 
 
 	int day = std::atoi(date.substr(pos + 4).c_str());
-	if (day > 31 || day < 1)
+	switch (month)
 	{
-		std::cerr << "Error: bad input => " << date << std::endl;
-		throw false;
+        case 1:
+        case 3: 
+        case 5:
+        case 7: 
+        case 8: 
+        case 10:
+        case 12:
+			if (day > 31 || day < 1)
+			{
+				std::cerr << "Error: bad input => " << date << std::endl;
+				throw false;
+			}
+			break;
+		case 4:
+		case 6:
+		case 9:
+		case 11:
+			if (day > 30 || day < 1)
+			{
+				std::cerr << "Error: bad input => " << date << std::endl;
+				throw false;
+			}
+			break;
+		case 2:
+			if (isBissextile(year_int) == true)
+			{
+				if (day > 29 || day < 1)
+				{
+					std::cerr << "Error: bad input => " << date << std::endl;
+					throw false;
+				}
+			}
+			else
+				if (day > 28 || day < 1)
+				{
+					std::cerr << "Error: bad input => " << date << std::endl;
+					throw false;
+				}
+			break;
+		default:
+			std::cerr << "Error: bad input => " << date << std::endl;
+			throw false;
 	}
 }
 
