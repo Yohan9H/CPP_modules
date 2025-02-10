@@ -6,7 +6,7 @@
 /*   By: yohurteb <yohurteb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:11:55 by yohurteb          #+#    #+#             */
-/*   Updated: 2025/02/07 15:43:45 by yohurteb         ###   ########.fr       */
+/*   Updated: 2025/02/10 09:26:51 by yohurteb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,11 @@ void	check_date(std::string date)
 		default:
 			std::cerr << "Error: bad input => " << date << std::endl;
 			throw false;
+	}
+	if (year_int <= 2009 && month == 1 && day < 2)
+	{
+		std::cerr << "Error: bad input => " << date << std::endl;
+		throw false; 
 	}
 }
 
